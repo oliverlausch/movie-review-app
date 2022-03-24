@@ -100,32 +100,37 @@ const MovieInfoComponent = (props) => {
     // Get the API via selectedMovie prop's imdbID and key, then
     // executive the response, and parse that response.data to setMovieInfo.
     useEffect(() => {
-        axios.get(`https://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`,)
+        axios.get(
+            `https://imdb-api.com/API/AdvancedSearch/${API_KEY}/?title=${selectedMovie}`)
+            //`https://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`,)
         .then((response) => setMovieInfo(response.data)); 
     }, [selectedMovie]);
 
     // Assign the API content to the movie prop which
     // currently contains the type and index of search results!
 
+  //  const { id, title, description, image } = props.movie;
+
+
     return (
-    <><Container>
-            <CoverImage src={movieInfo?.Poster} />
+    <>
+    
+    
+    
+    <Container>
+            <CoverImage src={movieInfo?.image} />
             <InfoColumn>
-                <MovieName>{movieInfo?.Title}</MovieName>
-                <MovieInfo>Type: {movieInfo?.Type}</MovieInfo>
-                <MovieInfo>IMDB Rating: <span>{movieInfo?.imdbRating}</span></MovieInfo>
-                <MovieInfo>Metascore: <span>{movieInfo?.Metascore}</span></MovieInfo>
-                <MovieInfo>Year <span>{movieInfo?.Year}</span></MovieInfo>
-                <MovieInfo>Language: <span>{movieInfo?.Language}</span></MovieInfo>
-                <MovieInfo>Rated: <span>{movieInfo?.Rated}</span></MovieInfo>
-                <MovieInfo>Released: <span>{movieInfo?.Released}</span></MovieInfo>
-                <MovieInfo>Runtime: <span>{movieInfo?.Runtime}</span></MovieInfo>
-                <MovieInfo>Director: <span>{movieInfo?.Director}</span></MovieInfo>
-                <MovieInfo>Actors: <span>{movieInfo?.Actors}</span></MovieInfo>
-                <MovieInfo>Genre: <span>{movieInfo?.Genre}</span></MovieInfo>
-                <MovieInfo>Description: <span>{movieInfo?.Plot}</span></MovieInfo>
-                <MovieInfo>Awards: <span>{movieInfo?.Awards}</span></MovieInfo>
-                <MovieInfo>Box Office: <span>{movieInfo?.BoxOffice}</span></MovieInfo>
+                <MovieName>{movieInfo?.title}</MovieName>
+                <MovieInfo>IMDB Rating: <span>{movieInfo?.imDbRating}</span></MovieInfo>
+                <MovieInfo>Metascore: <span>{movieInfo?.metacriticRating}</span></MovieInfo>
+                <MovieInfo>Year <span>{movieInfo?.description}</span></MovieInfo>
+                <MovieInfo>Rated: <span>{movieInfo?.contentRating}</span></MovieInfo>
+                <MovieInfo>Runtime: <span>{movieInfo?.runtimeStr}</span></MovieInfo>
+                <MovieInfo>Actors: <span>{movieInfo?.stars}</span></MovieInfo>
+                <MovieInfo>Genre: <span>{movieInfo?.genres}</span></MovieInfo>
+                <MovieInfo>Description: <span>{movieInfo?.plot}</span></MovieInfo>
+                
+               
             </InfoColumn>
             <Close onClick={() => props.onMovieSelect()}>
                 X
@@ -135,7 +140,7 @@ const MovieInfoComponent = (props) => {
             <Trailer>
                 <VideoContainer>
                     <div className="App">
-                    <MovieName>{movieInfo?.Title} Trailer</MovieName>
+                    <MovieName>{movieInfo?.title} Trailer</MovieName>
                     <br></br>
                     <br></br>
                         <YoutubeEmbed embedId="Jvurpf91omw" />

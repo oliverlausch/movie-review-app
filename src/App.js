@@ -106,7 +106,7 @@ function App() {
       //`https://www.omdbapi.com/?s=${searchString}}&apikey=${API_KEY}`
       )
 
-      updateMovieList(response.data.Search)
+      updateMovieList(response.data.results)
   };
 
 

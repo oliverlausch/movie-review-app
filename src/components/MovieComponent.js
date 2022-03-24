@@ -45,16 +45,18 @@ const MovieComponent = (props) => {
 
     // Assign the API content to the movie prop which
     // currently contains the type and index of search results!
-    const { Title, Year, imdbID, Type, Poster } = props.movie;
+   // const { Title, Year, imdbID, Type, Poster } = props.movie;
 
-    //const { id, title, year, type, image } = props.movie;
+   //<MovieInfo>Type: {type}</MovieInfo>
 
-    return <MovieContainer onClick={ () => props.onMovieSelect(imdbID) }>
-        <CoverImage src={Poster} />
-            <MovieName>{Title}</MovieName>
+    const { id, title, description, image } = props.movie;
+
+    return <MovieContainer onClick={ () => props.onMovieSelect(id) }>
+        <CoverImage src={image} />
+            <MovieName>{title}</MovieName>
                 <InfoColumn>
-            <MovieInfo>Year: {Year}</MovieInfo>
-            <MovieInfo>Type: {Type}</MovieInfo>
+            <MovieInfo>Year: {description}</MovieInfo>
+            
         </InfoColumn>
     </MovieContainer>
 }
