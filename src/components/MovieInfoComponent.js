@@ -1,8 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {API_KEY} from "../App";
+import { API_KEY } from "../App.js";
 import YoutubeEmbed from "./YoutubeEmbed";
+
+
+//export const embedId
 
 const Container = styled.div`
 display: flex;
@@ -93,74 +96,100 @@ const MovieInfoComponent = (props) => {
     // As shown in API documentation.
 
     const { selectedMovie } = props;
+    // eslint-disable-next-line no-unused-vars
+    
     const [movieInfo, setMovieInfo] = useState();
+
+    const [trailerInfo, setTrailerInfo] = useState();
 
     // As selectedMovie is receiving the ImdbID, it needs to be a prop.
     //
     // Get the API via selectedMovie prop's imdbID and key, then
     // executive the response, and parse that response.data to setMovieInfo.
     useEffect(() => {
-        axios.get(
-            `https://imdb-api.com/API/AdvancedSearch/${API_KEY}/?title=${selectedMovie}`)
-            //`https://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`,)
-        .then((response) => setMovieInfo(response.data)); 
-    }, [selectedMovie]);
 
-    // Assign the API content to the movie prop which
-    // currently contains the type and index of search results!
+      const fetchMovieInfo = async () => {
 
-  //  const { id, title, description, image } = props.movie;
+        // Get Request
+      await axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/${selectedMovie}`,).then((response) =>
+      setMovieInfo(response.data));
+        
+      }; fetchMovieInfo() }, [selectedMovie]);
+
+      useEffect(() => {
+
+        const fetchTrailerInfo = async () => {
+  
+          // Get Request
+        await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY}/${selectedMovie}`,).then((response) =>
+        setTrailerInfo(response.data.videoId));
+          
+        }; fetchTrailerInfo() }, );
+
+
+
+
+      //const embedId = videoId;
 
 
     return (
-    <>
-    
-    
-    
-    <Container>
-            <CoverImage src={movieInfo?.image} />
+
+      
+      
+
+            <><Container>
+        {movieInfo ? (
+          <>            
+            
+            
+
+            <CoverImage src={movieInfo?.image} alt={movieInfo?.title} />
             <InfoColumn>
-                <MovieName>{movieInfo?.title}</MovieName>
-                <MovieInfo>IMDB Rating: <span>{movieInfo?.imDbRating}</span></MovieInfo>
-                <MovieInfo>Metascore: <span>{movieInfo?.metacriticRating}</span></MovieInfo>
-                <MovieInfo>Year <span>{movieInfo?.description}</span></MovieInfo>
-                <MovieInfo>Rated: <span>{movieInfo?.contentRating}</span></MovieInfo>
-                <MovieInfo>Runtime: <span>{movieInfo?.runtimeStr}</span></MovieInfo>
-                <MovieInfo>Actors: <span>{movieInfo?.stars}</span></MovieInfo>
-                <MovieInfo>Genre: <span>{movieInfo?.genres}</span></MovieInfo>
-                <MovieInfo>Description: <span>{movieInfo?.plot}</span></MovieInfo>
-                
-               
+            <MovieName><span>{movieInfo?.title}</span></MovieName>
+              <MovieInfo>Type: <span>{movieInfo?.type}</span></MovieInfo>
+              <MovieInfo>Director: <span>{movieInfo?.directors}</span></MovieInfo>
+              <MovieInfo>IMDB Rating: <span>{movieInfo.imDbRating}</span></MovieInfo>
+              <MovieInfo>Year: <span>{movieInfo.year}</span></MovieInfo>
+              <MovieInfo>Released: <span>{movieInfo.releaseDate}</span></MovieInfo>
+              <MovieInfo>Languages: <span>{movieInfo.languages}</span></MovieInfo>
+              <MovieInfo>Metascore: <span>{movieInfo.metacriticRating}</span></MovieInfo>
+              <MovieInfo>Rated: <span>{movieInfo?.contentRating}</span></MovieInfo>
+              <MovieInfo>Runtime: <span>{movieInfo?.runtimeStr}</span></MovieInfo>
+              <MovieInfo>Actors: <span>{movieInfo?.stars}</span></MovieInfo>
+              <MovieInfo>Awards: <span>{movieInfo?.awards}</span></MovieInfo>
+              <MovieInfo>Genre: <span>{movieInfo?.genres}</span></MovieInfo>
+              <MovieInfo>Description: <span>{movieInfo?.plot}</span></MovieInfo>
+
+
             </InfoColumn>
-            <Close onClick={() => props.onMovieSelect()}>
-                X
-            </Close>
-        </Container>
+            
+            
+            <Close onClick={() => props.onMovieSelect()}>X</Close>
+          </>
+        ) : (
+          "Loading..."
+        )}
+      </Container><Trailer>
+          <VideoContainer>
+            <div className="App">
+              <MovieName>{movieInfo?.title} Trailer</MovieName>
+              <br></br>
+              <br></br>
+              <YoutubeEmbed embedId={trailerInfo} />
 
-            <Trailer>
-                <VideoContainer>
-                    <div className="App">
-                    <MovieName>{movieInfo?.title} Trailer</MovieName>
-                    <br></br>
-                    <br></br>
-                        <YoutubeEmbed embedId="Jvurpf91omw" />
-                        
-                    </div>
-                </VideoContainer>
+            </div>
+          </VideoContainer>
 
-                <LiveChat>
-                <div className="App">
-                    <MovieName>LiveChat</MovieName>
-                    <br></br>
-                    <br></br>
-                    </div>
-                </LiveChat>
-            </Trailer>
-            </>
-        );
-        
-};
+          <LiveChat>
+            <div className="App">
+              <MovieName>LiveChat</MovieName>
+              <br></br>
+              <br></br>
+            </div>
+          </LiveChat>
+        </Trailer></>
 
+        )
 
-
-export default MovieInfoComponent;
+        }
+export default MovieInfoComponent

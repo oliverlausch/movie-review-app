@@ -49,6 +49,8 @@ const MovieComponent = (props) => {
 
    //<MovieInfo>Type: {type}</MovieInfo>
 
+    // removed id from const and onMoveSelect parse in props method!
+
     const { id, title, description, image } = props.movie;
 
     return <MovieContainer onClick={ () => props.onMovieSelect(id) }>

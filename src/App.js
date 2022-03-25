@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import MovieComponent from "./components/MovieComponent";
 import axios from 'axios';
 import MovieInfoComponent from "./components/MovieInfoComponent";
-//export const API_KEY = "7a9c166d";
-export const API_KEY = "k_6npoyq2n";
+
+//export const API_KEY = "k_6npoyq2n";
+//export const API_KEY = "k_9uxy48gg";
+export const API_KEY = "k_aaaaaaaa";
 
 const Container = styled.div`
 display: flex;
@@ -82,7 +84,9 @@ function App() {
   const [movieList, updateMovieList] = useState([]);
   
   // IMDB API
-  const API_KEY = "k_6npoyq2n";
+  //const API_KEY = "k_6npoyq2n";
+  //const API_KEY = "k_9uxy48gg";
+  const API_KEY = "k_aaaaaaaa";
   
   // OMDB API
   
