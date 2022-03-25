@@ -138,7 +138,7 @@ function App() {
         <Header>
       <AppName>
         <AppLogo src="/VideocutLOGO.png" />
-        React Movie App
+        COTE Movies
       </AppName>
       <SearchBox>
         <SearchIcon src="/icons8-search.png" />
