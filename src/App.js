@@ -7,6 +7,7 @@ import MovieInfoComponent from "./components/MovieInfoComponent";
 //export const API_KEY = "k_6npoyq2n";
 //export const API_KEY = "k_9uxy48gg";
 export const API_KEY = "k_aaaaaaaa";
+//export const API_KEY = "k_d5nc6sfs";
 
 const Container = styled.div`
 display: flex;
@@ -86,11 +87,9 @@ function App() {
   // IMDB API
   //const API_KEY = "k_6npoyq2n";
   //const API_KEY = "k_9uxy48gg";
-  const API_KEY = "k_aaaaaaaa";
+  //const API_KEY = "k_aaaaaaaa";
+  const API_KEY = "k_d5nc6sfs";
   
-  // OMDB API
-  
-  //const API_KEY = "7a9c166d";
   const [selectedMovie, onMovieSelect] = useState();
   
   // API call
@@ -105,16 +104,10 @@ function App() {
       
       `https://imdb-api.com/API/AdvancedSearch/${API_KEY}/?title=${searchString}`
       
-
-      // OMDB API
-      //`https://www.omdbapi.com/?s=${searchString}}&apikey=${API_KEY}`
       )
 
       updateMovieList(response.data.results)
   };
-
-
-
 
   // search query with timeout of .5 seconds so it doesn't
   // do an api call for every letter, but waits for
@@ -127,13 +120,8 @@ function App() {
     updateTimeoutId(timeout);
   };
   
-  
-  
-  
-  
   return (
    
-
       <Container>
         <Header>
       <AppName>
@@ -167,9 +155,6 @@ function App() {
     // Whereby movieList array is added to the MovieComponent class,
     // with it's key mapped to the returned index of an obj, and it's obj
     // value mapped to movie.
-
-
-
 
     }
 

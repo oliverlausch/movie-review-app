@@ -4,9 +4,6 @@ import styled from "styled-components";
 import { API_KEY } from "../App.js";
 import YoutubeEmbed from "./YoutubeEmbed";
 
-
-//export const embedId
-
 const Container = styled.div`
 display: flex;
 flex-direction: row;
@@ -39,9 +36,11 @@ justify-content: center;
 `;
 
 const CoverImage = styled.img`
+display: flex;
 object-fit: fill;
-height: 352px;
+height: 452px;
 margin-left: 10px;
+align-items: center;
 `;
 
 const InfoColumn = styled.div`
@@ -90,6 +89,10 @@ const Close = styled.span`
   opacity: 0.8;
 `;
 
+const Desc = styled.div`
+ text-transform: none;
+`;
+
 const MovieInfoComponent = (props) => {
 
     // NOTE: The API key is ?i instead of ?s as we are searching for a particular imdbID rather than movie Title.
@@ -126,23 +129,12 @@ const MovieInfoComponent = (props) => {
           
         }; fetchTrailerInfo() }, );
 
-
-
-
-      //const embedId = videoId;
-
-
     return (
-
-      
-      
 
             <><Container>
         {movieInfo ? (
           <>            
             
-            
-
             <CoverImage src={movieInfo?.image} alt={movieInfo?.title} />
             <InfoColumn>
             <MovieName><span>{movieInfo?.title}</span></MovieName>
@@ -156,13 +148,10 @@ const MovieInfoComponent = (props) => {
               <MovieInfo>Rated: <span>{movieInfo?.contentRating}</span></MovieInfo>
               <MovieInfo>Runtime: <span>{movieInfo?.runtimeStr}</span></MovieInfo>
               <MovieInfo>Actors: <span>{movieInfo?.stars}</span></MovieInfo>
-              <MovieInfo>Awards: <span>{movieInfo?.awards}</span></MovieInfo>
+              <MovieInfo>Awards: <Desc><span>{movieInfo?.awards}</span></Desc></MovieInfo>
               <MovieInfo>Genre: <span>{movieInfo?.genres}</span></MovieInfo>
-              <MovieInfo>Description: <span>{movieInfo?.plot}</span></MovieInfo>
-
-
+              <MovieInfo>Description: <Desc><span>{movieInfo?.plot}</span></Desc></MovieInfo>
             </InfoColumn>
-            
             
             <Close onClick={() => props.onMovieSelect()}>X</Close>
           </>
@@ -188,8 +177,7 @@ const MovieInfoComponent = (props) => {
             </div>
           </LiveChat>
         </Trailer></>
-
+        
         )
-
-        }
+          }
 export default MovieInfoComponent
