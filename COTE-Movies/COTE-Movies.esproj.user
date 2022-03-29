@@ -6,7 +6,7 @@
   "type": "edge",
   "request": "launch",
   "name": "localhost (Edge)",
-  "url": "https://localhost:3000",
+  "url": "http://localhost:3000",
   "webRoot": "C:\\Users\\pmotj\\Documents\\GitHub\\react-movies\\COTE-Movies"
 }</LaunchJsonTarget>
   </PropertyGroup>
