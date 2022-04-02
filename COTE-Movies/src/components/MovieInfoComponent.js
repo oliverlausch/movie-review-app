@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { API_KEY } from "../App.js";
 import YoutubeEmbed from "./YoutubeEmbed";
+import Dashboard from "./Dashboard"
+import Store from "./Store"
 
 const Container = styled.div`
 display: flex;
@@ -28,12 +30,20 @@ width: 100%;
 
 `;
 
-const LiveChat = styled.div`
+const DashboardStyle = styled.div`
 width: 50%;
-padding: 20px 30px;
+padding: 10px 30px;
 background: #708090;
 justify-content: center;
 `;
+
+const LiveChat = styled.div`
+width: 50%;
+padding: 10px 30px;
+background: #708090;
+justify-content: center;
+`;
+
 
 const CoverImage = styled.img`
 display: flex;
@@ -130,7 +140,7 @@ const MovieInfoComponent = (props) => {
         }; fetchTrailerInfo() }, );
 
     return (
-
+      
             <><Container>
         {movieInfo ? (
           <>            
@@ -170,8 +180,15 @@ const MovieInfoComponent = (props) => {
           </VideoContainer>
 
           <LiveChat>
+          <Store>
+            <Dashboard/>
+          </Store>
+          
+          
+            
             <div className="App">
               <MovieName>LiveChat</MovieName>
+              
               <br></br>
               <br></br>
             </div>

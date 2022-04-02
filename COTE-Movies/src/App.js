@@ -4,10 +4,13 @@ import MovieComponent from "./components/MovieComponent";
 import axios from 'axios';
 import MovieInfoComponent from "./components/MovieInfoComponent";
 
+
+
+
 //export const API_KEY = "k_6npoyq2n";
-//export const API_KEY = "k_9uxy48gg";
-export const API_KEY = "k_atxl86be";
+export const API_KEY = "k_9uxy48gg";
 //export const API_KEY = "k_d5nc6sfs";
+//export const API_KEY = "k_atxl86be";
 
 const Container = styled.div`
 display: flex;
@@ -80,96 +83,102 @@ gap: 24px;
 `;
 
 function App() {
-    const [searchQuery, updateSearchQuery] = useState();
-    const [timeoutId, updateTimeoutId] = useState();
-    const [movieList, updateMovieList] = useState([]);
+  const [searchQuery, updateSearchQuery] = useState();
+  const [timeoutId, updateTimeoutId] = useState();
+  const [movieList, updateMovieList] = useState([]);
+  
+  // IMDB API
+  //const API_KEY = "k_6npoyq2n";
+  //const API_KEY = "k_9uxy48gg";
+  //const API_KEY = "k_aaaaaaaa";
+  
+  
+  const [selectedMovie, onMovieSelect] = useState();
+  
+  // API call
+  
+  const fetchData = async (searchString) => {
+      const response = await axios.get(
 
-    // IMDB API
-    //const API_KEY = "k_6npoyq2n";
-    //const API_KEY = "k_9uxy48gg";
-    //const API_KEY = "k_aaaaaaaa";
+      // IMDB API
+      
+      //`https://imdb-api.com/en/API/SearchMovie/${API_KEY}/${searchString}`
+      
+      
+      `https://imdb-api.com/API/AdvancedSearch/${API_KEY}/?title=${searchString}`
+      
+      )
 
+      updateMovieList(response.data.results)
+  };
 
-    const [selectedMovie, onMovieSelect] = useState();
+  // search query with timeout of .5 seconds so it doesn't
+  // do an api call for every letter, but waits for
+  // the user to finish typing.
 
-    // API call
+  const onTextChange = (event) => {
+    clearTimeout(timeoutId);
+    updateSearchQuery(event.target.value);
+    const timeout = setTimeout(() => fetchData(event.target.value), 500);
+    updateTimeoutId(timeout);
+  };
+  
+  
 
-    const fetchData = async (searchString) => {
-        const response = await axios.get(
+  return (
 
-            // IMDB API
+      <Container>
+        <Header>
+      <AppName>
+        <AppLogo src="/VideocutLOGO.png" />
+        COTE-Movies
+      </AppName>
+      <SearchBox>
+        <SearchIcon src="/icons8-search.png" />
+        <SearchInput placeholder="Search here..."
+          value={searchQuery}
+          onChange={onTextChange} />
+      </SearchBox>
 
-            //`https://imdb-api.com/en/API/SearchMovie/${API_KEY}/${searchString}`
+    </Header>
+    {selectedMovie && (
+    <MovieInfoComponent
+       selectedMovie = {selectedMovie}
+       onMovieSelect = {onMovieSelect}
+    />)}
+    
+    <MovieListContainer>
+    { 
+    // Check if the movieList which is a variable obj,
+    // marked by a "?" mark, has a length (Also marked by ? mark),
+    // i.e. If there is no search results, the movieList will be 0, as will the length of it**
+    // Then map the movieList via the map method, and return the MovieComponent.
+    // If no movie is found, return the placeholder "No search results found!"  - else marked via :
 
+    // movieList is a useState of array type.
+    // movieList is mapped to movie obj and index,
+    // Whereby movieList array is added to the MovieComponent class,
+    // with it's key mapped to the returned index of an obj, and it's obj
+    // value mapped to movie.
 
-            `https://imdb-api.com/API/AdvancedSearch/${API_KEY}/?title=${searchString}`
+    }
 
-        )
+        {movieList?.length
+          ? movieList.map((movie, index) => (
+          <MovieComponent
+           key = {index}
+           movie = {movie}
+           onMovieSelect = {onMovieSelect} 
+           />))
+          : "No search results were generated, please enter a new search."}
+        
+        </MovieListContainer>
+      </Container>
+      
+  );
 
-        updateMovieList(response.data.results)
-    };
+  
 
-    // search query with timeout of .5 seconds so it doesn't
-    // do an api call for every letter, but waits for
-    // the user to finish typing.
-
-    const onTextChange = (event) => {
-        clearTimeout(timeoutId);
-        updateSearchQuery(event.target.value);
-        const timeout = setTimeout(() => fetchData(event.target.value), 500);
-        updateTimeoutId(timeout);
-    };
-
-    return (
-
-        <Container>
-            <Header>
-                <AppName>
-                    <AppLogo src="/VideocutLOGO.png" />
-                    COTE-Movies
-                </AppName>
-                <SearchBox>
-                    <SearchIcon src="/icons8-search.png" />
-                    <SearchInput placeholder="Search here..."
-                        value={searchQuery}
-                        onChange={onTextChange} />
-                </SearchBox>
-
-            </Header>
-            {selectedMovie && (
-                <MovieInfoComponent
-                    selectedMovie={selectedMovie}
-                    onMovieSelect={onMovieSelect}
-                />)}
-
-            <MovieListContainer>
-                {
-                    // Check if the movieList which is a variable obj,
-                    // marked by a "?" mark, has a length (Also marked by ? mark),
-                    // i.e. If there is no search results, the movieList will be 0, as will the length of it**
-                    // Then map the movieList via the map method, and return the MovieComponent.
-                    // If no movie is found, return the placeholder "No search results found!"  - else marked via :
-
-                    // movieList is a useState of array type.
-                    // movieList is mapped to movie obj and index,
-                    // Whereby movieList array is added to the MovieComponent class,
-                    // with it's key mapped to the returned index of an obj, and it's obj
-                    // value mapped to movie.
-
-                }
-
-                {movieList?.length
-                    ? movieList.map((movie, index) => (
-                        <MovieComponent
-                            key={index}
-                            movie={movie}
-                            onMovieSelect={onMovieSelect}
-                        />))
-                    : "No search results were generated, please enter a new search."}
-
-            </MovieListContainer>
-        </Container>
-    );
 }
 
 export default App;
