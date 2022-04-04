@@ -51,13 +51,13 @@ const MovieComponent = (props) => {
 
     // removed id from const and onMoveSelect parse in props method!
 
-    const { id, title, description, image } = props.movie;
+    const { id, title, description, year, image } = props.movie;
 
     return <MovieContainer onClick={ () => props.onMovieSelect(id) }>
         <CoverImage src={image} />
             <MovieName>{title}</MovieName>
                 <InfoColumn>
-            <MovieInfo>Year: {description}</MovieInfo>
+            <MovieInfo>Year: {description} {year}</MovieInfo>
             
         </InfoColumn>
     </MovieContainer>
