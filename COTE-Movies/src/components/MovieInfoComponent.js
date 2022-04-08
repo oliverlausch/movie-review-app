@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { API_KEY } from "../App.js";
 import YoutubeEmbed from "./YoutubeEmbed";
 import Dashboard from "./Dashboard"
+import ChatApp from "./ChatApp"
 import Store from "./Store"
+
 
 const Container = styled.div`
 display: flex;
@@ -103,6 +105,8 @@ const Desc = styled.div`
  text-transform: none;
 `;
 
+
+
 const MovieInfoComponent = (props) => {
 
     // NOTE: The API key is ?i instead of ?s as we are searching for a particular imdbID rather than movie Title.
@@ -114,7 +118,7 @@ const MovieInfoComponent = (props) => {
     const [movieInfo, setMovieInfo] = useState();
 
     const [trailerInfo, setTrailerInfo] = useState();
-
+    
     // As selectedMovie is receiving the ImdbID, it needs to be a prop.
     //
     // Get the API via selectedMovie prop's imdbID and key, then
@@ -126,7 +130,7 @@ const MovieInfoComponent = (props) => {
         // Get Request
       await axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/${selectedMovie}`,).then((response) =>
       setMovieInfo(response.data));
-        
+      
       }; fetchMovieInfo() }, [selectedMovie]);
 
       useEffect(() => {
@@ -136,9 +140,9 @@ const MovieInfoComponent = (props) => {
           // Get Request
         await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY}/${selectedMovie}`,).then((response) =>
         setTrailerInfo(response.data.videoId));
-          
+        
         }; fetchTrailerInfo() }, );
-
+        
     return (
       
             <><Container>
@@ -180,14 +184,14 @@ const MovieInfoComponent = (props) => {
           </VideoContainer>
 
           <LiveChat>
-          <Store>
-            <Dashboard/>
-          </Store>
+
+            <ChatApp selectMovie={selectedMovie}/>
+          
           
           
             
             <div className="App">
-              <MovieName>LiveChat</MovieName>
+              
               
               <br></br>
               <br></br>
@@ -197,4 +201,5 @@ const MovieInfoComponent = (props) => {
         
         )
           }
+
 export default MovieInfoComponent

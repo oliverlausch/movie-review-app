@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/Styles';
 import styled from "styled-components";
 import Box from '@mui/material/Box';
@@ -17,6 +17,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import { CTX } from './Store';
+import io from "socket.io-client";
+import Store from "./Store"
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -41,25 +45,45 @@ const useStyles = makeStyles(theme => ({
     chatBox: {
         width: '85%'
     },
+    nicknameBox: {
+        width: '30%'
+    },
     button: {
         width: '15%'
         
     }
 }));
 
-export default function Dashboard(){
+const Dashboard = (props) => {
     const classes = useStyles();
-    
+    const { selectMovie } = props;
+    console.log(selectMovie)
     //CTX store
     const {allChats, sendChatAction, user} = React.useContext(CTX);
-
-    console.log({allChats});
+    
+    //console.log({allChats});
 
     const topics = Object.keys(allChats);
 
     //Local State
     const [textValue, changeTextValue] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [room, setRoom] = React.useState('');
     const [activeTopic, changeActiveTopic] = React.useState(topics[0]);
+
+
+    useEffect(() => {
+        setRoom(selectMovie)
+    }, [selectMovie])
+
+    const joinRoom = () => {
+        if(username !== "" && room !== ""){
+            socket = io(':3001');
+            socket.emit("join_room", room);
+        }
+    }
+
+    let socket;
 
     return(
         <Card sx={{ minWidth: 275,  minHeight: 475}}>
@@ -72,7 +96,7 @@ export default function Dashboard(){
         </Typography>
         
         <div className={classes.flex}>
-            <div className={classes.topicsWindow}>
+            {/* <div className={classes.topicsWindow}>
                 <List>
                     {
                         topics.map(topic => (
@@ -83,17 +107,22 @@ export default function Dashboard(){
                     }
                     
                 </List>
+            </div> */}
+            <div className={classes.flex}>
+                <div className={classes.nicknameBox}>
+                    <input type="test" placeholder="Nickname" 
+                    onChange={(event) => {
+                        setUsername(event.target.value);                     
+                    }}/>
+                    
+                    <button onClick={joinRoom}>Join</button>
+                    <chat socket={socket} username={username} room={room}/>
+                </div>
             </div>
             <div className={classes.chatWindow}>
             
                     {
-                        allChats[activeTopic].map((chat, i) => (
-                            <div className={classes.flex} key={i}>
-                                <Chip label={chat.from}/>
-                                <Typography variant='body1' gutterBottom>{chat.msg}</Typography>
-                            </div>
-                            
-                        ))
+                        
                     }
                     
                 
@@ -105,16 +134,13 @@ export default function Dashboard(){
             variant="outlined"
             className={classes.chatBox}
             value={textValue}
-            onChange={e => changeTextValue(e.target.value)} 
+            
             />
             <Button 
                 variant='contained' 
                 color="primary" 
                 className={classes.button}
-                onClick={() => {
-                    sendChatAction({from: user, msg: textValue, topic: activeTopic})
-                    changeTextValue('');
-                }}
+                
             >
                 Send
             </Button>
@@ -125,3 +151,4 @@ export default function Dashboard(){
     )
     
 }
+export default Dashboard;
