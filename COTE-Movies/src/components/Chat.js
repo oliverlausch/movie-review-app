@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 function Chat({socket, username, room}){
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
-    const [currentRoom, setCurrentRoom] = useState("");
+    
 
     const sendMessage = async () => {
         if(currentMessage !== "")
@@ -87,12 +87,12 @@ function Chat({socket, username, room}){
             socket.on("receive_message", (data) =>{
                 setMessageList((list) => [...list, data]);
             })
-        // }else{
-        //     //socket.emit("room_disconnect");
-        //     //socket.emit("join_room", room);
-        //     //setMessageList([]);
-        // }
-    }, [socket])
+    //     }else{
+    //         //socket.emit("room_disconnect");
+    //         socket.emit("join_room", room);
+    //         setMessageList([]);
+    //     }
+     }, [socket])
 
     const classes = useStyles();
 

@@ -136,12 +136,17 @@ const MovieInfoComponent = (props) => {
       useEffect(() => {
 
         const fetchTrailerInfo = async () => {
-  
+        
           // Get Request
         await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY}/${selectedMovie}`,).then((response) =>
         setTrailerInfo(response.data.videoId));
         
-        }; fetchTrailerInfo() }, );
+        }; fetchTrailerInfo()}, );
+
+      // useEffect(() => {
+      //   const fetchChatApp = async () => {
+      //     ChatApp();
+      //   }; ChatApp()}, );
         
     return (
       

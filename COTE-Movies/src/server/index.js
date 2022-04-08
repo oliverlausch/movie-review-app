@@ -24,6 +24,7 @@ io.on('connection', function(socket){
     console.log(`a user connected: ${socket.id}`);
 
     socket.on("join_room", function(data){
+        
         socket.join(data);
         console.log(`User with Id: ${socket.id} joined room: ${data}` )
         
@@ -36,10 +37,9 @@ io.on('connection', function(socket){
     //     io.emit('chat message', msg);
     //     console.log('messages: ' + JSON.stringify(msg));
     // });
-    socket.on("room_disconnect", () => {
-        console.log("User Disconnected", socket.id);
-    });
-    socket.on("disconnect", () => {
+    
+    socket.on("room_disconnect", (data) => {
+        socket.disconnect(data)
         console.log("User Disconnected", socket.id);
     });
 })

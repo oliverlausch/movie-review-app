@@ -5,24 +5,36 @@ import Chat from "./Chat";
 
 const socket = io.connect("http://localhost:3001");
 
-const App = (props) =>{
+const ChatApp = (props) =>{
     const [username, setUsername] = useState("");
     const [room, setRoom] = useState("");
     const [showChat, setShowChat] = useState(false);
+    const [currentRoom, setCurrentRoom] = useState("");
     const { selectMovie } = props;
     console.log(selectMovie)
     
     useEffect(() => {
         setRoom(selectMovie)
         socket.emit("join_room", room);
+        setShowChat(false);
     }, [selectMovie, room])
 
     const joinRoom = () => {
       if (username !== "") {
         socket.emit("join_room", room);
         setShowChat(true);
+        setCurrentRoom(room)
+       }
+      else if (username !== "" && currentRoom !== room)
+      {
+        socket.emit("room_disconnect", currentRoom)
+        socket.emit("join_room", room);
+        setShowChat(true);
+        setCurrentRoom(room);
       }
-    };
+    }
+
+    
   
     return (
       <div className="App">
@@ -46,4 +58,4 @@ const App = (props) =>{
     );
   }
   
-  export default App;
+  export default ChatApp;
