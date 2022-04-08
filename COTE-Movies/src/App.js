@@ -93,6 +93,39 @@ margin-left: 20px;
 text-transform: capitalize;
 `;
 
+const Login = styled.button`
+display: flex;
+flex - direction: row;
+padding: 10px 0px;
+border - radius: 6px;
+background - color:  #ec3335;
+height: 40px;
+justify - content: space - around;
+align - items: center;
+color: black;
+font - size: 20px;
+font - weight: bolder;
+width: 10 %;
+text - transform: uppercase;
+`;
+
+const Register = styled.button`
+display: flex;
+flex - direction: row;
+padding: 10px 0px;
+border - radius: 6px;
+background - color:  #ec3335;
+height: 40px;
+justify - content: space - around;
+align - items: center;
+color: black;
+font - size: 20px;
+font - weight: bolder;
+width: 10 %;
+text - transform: uppercase;
+`;
+
+
 function App() {
   const [searchQuery, updateSearchQuery] = useState();
   const [timeoutId, updateTimeoutId] = useState();
@@ -146,6 +179,8 @@ function App() {
             <AppLogo src="/VideocutLOGO.png" />
             COTE-Movies
         </AppName>
+        < Login > Login</Login >
+        <Register>Register</Register>
         <SearchBox>
             <SearchIcon src="/icons8-search.png" />
             <SearchInput placeholder="Search here..."
