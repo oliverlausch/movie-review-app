@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { API_KEY } from "../App.js";
 import YoutubeEmbed from "./YoutubeEmbed";
-import Dashboard from "./Dashboard"
+
 import ChatApp from "./ChatApp"
-import Store from "./Store"
+
 
 
 const Container = styled.div`
