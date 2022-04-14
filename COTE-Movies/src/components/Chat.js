@@ -8,7 +8,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { borderRight } from '@mui/system';
+import { borderRight, margin } from '@mui/system';
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -17,10 +17,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
-import { CTX } from './Store';
-import io from "socket.io-client";
-import Store from "./Store"
-
+import Avatar from '@mui/material/Avatar';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 
@@ -31,7 +29,15 @@ const useStyles = makeStyles(theme => ({
     },
     flex: {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        "& #youFlex":{
+            justifyContent: 'flex-end',
+            display: 'flex',
+            marginRight: '5px',
+            
+            
+        }
+        
     },
     topicsWindow: {
         width: '30%',
@@ -39,19 +45,67 @@ const useStyles = makeStyles(theme => ({
         borderRight: '1px solid grey'
     },
     chatWindow: {
-        width: '70%',
-        height: '300px',
-        padding: '20px'
+        width: '90%',
+        height: '212px',
+        padding: '20px',
+        
     },
     chatBox: {
         width: '85%'
     },
     nicknameBox: {
-        width: '30%'
+        "& #you":{
+            
+        },
+        "& #other":{
+            
+        },     
+        
     },
     button: {
-        width: '15%'
+        width: '15%',
+        marginLeft: '5px !important'
         
+    },
+    message: {
+         
+       
+
+
+        
+    },
+    messageContainer: {
+        height: '95%',
+        overflowY: 'scroll',
+        overflowX: 'hidden',
+        "& #youMessage":{
+            
+            
+            background: 'green',
+            borderRadius: '10px',
+            padding: '2px',
+            margin: '1px',
+        },
+        "& #otherMessage":{
+            
+            
+            background: 'blue',
+            borderRadius: '10px',
+            padding: '2px',
+            margin: '1px',
+        },
+        "& #youNickname":{
+            display: 'none' 
+        },
+        "& #otherNickname":{
+            
+        },     
+    },
+    chatHeader: {
+        height: '10px',
+        display: 'flex',
+        alignItems: 'center',
+        border: '1px solid grey'
     }
 }));
 
@@ -97,29 +151,36 @@ function Chat({socket, username, room}){
     const classes = useStyles();
 
     return(
-        <Card sx={{ minWidth: 275,  minHeight: 475}}>
+        <Card sx={{ maxHeight: 402}}>
       <CardContent>
-        <Typography variant = "h2" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography className={classes.chatHeader} variant = "h2" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Chat App
         </Typography>
-        <Typography variant="h5" component="div">
-          {room}
-        </Typography>
+        
         
         <div className={classes.flex}>
         
             <div className={classes.chatWindow}>
-            {messageList.map((messageContent) => {
-            return(
+            <ScrollToBottom className={classes.messageContainer}>
+                {messageList.map((messageContent) => {
+                 return(
+                <div id={username === messageContent.author? "youFlex" : "otherFlex"}>
                 <div className={classes.flex} >
-                    <Chip label={messageContent.author} />
-                    
-                    <Typography variant='body1' gutterBottom>{messageContent.message};
-                    </Typography>
+                     <div id={username === messageContent.author? "youNickname" : "otherNickname"}>
+                    <div className={classes.nicknameBox}>
+                    <Chip avatar={<Avatar>{messageContent.author[0]}</Avatar>}label={messageContent.author} />
+                    </div>
+                    </div>
+                    <div id={username === messageContent.author? "youMessage" : "otherMessage"}>
+                    <div className={classes.message} >
+                        <Typography variant='body1' gutterBottom>{messageContent.message}</Typography>
+                    </div>
+                    </div>
+                </div>
                 </div>
                 );
-            })}
-            
+                })}
+            </ScrollToBottom>
             </div>
             
         </div>

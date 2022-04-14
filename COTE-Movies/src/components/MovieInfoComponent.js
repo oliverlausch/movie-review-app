@@ -21,7 +21,7 @@ display: flex;
 padding: 20px 30px;
 flex-direction: column;
 height: 100%;
-width: 50%;
+width: 47%;
 border-bottom: 1px solid #969696;
 `;
 
@@ -32,18 +32,16 @@ width: 100%;
 
 `;
 
-const DashboardStyle = styled.div`
-width: 50%;
-padding: 10px 30px;
-background: #708090;
-justify-content: center;
-`;
 
-const LiveChat = styled.div`
+
+const ChatContainer = styled.div`
+display: flex;
+padding: 5px 15px;
+flex-direction: column;
+
 width: 50%;
-padding: 10px 30px;
-background: #708090;
-justify-content: center;
+border-bottom: 1px solid #969696;
+border-left: 1px solid #969696;
 `;
 
 
@@ -188,20 +186,15 @@ const MovieInfoComponent = (props) => {
             </div>
           </VideoContainer>
 
-          <LiveChat>
+          <ChatContainer>
 
             <ChatApp selectMovie={selectedMovie}/>
           
           
           
             
-            <div className="App">
-              
-              
-              <br></br>
-              <br></br>
-            </div>
-          </LiveChat>
+            
+          </ChatContainer>
         </Trailer></>
         
         )
