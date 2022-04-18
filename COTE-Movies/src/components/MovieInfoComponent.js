@@ -21,7 +21,7 @@ display: flex;
 padding: 20px 30px;
 flex-direction: column;
 height: 100%;
-width: 47%;
+width: 100%;
 border-bottom: 1px solid #969696;
 `;
 
@@ -39,7 +39,7 @@ display: flex;
 padding: 5px 15px;
 flex-direction: column;
 
-width: 50%;
+width: 100%;
 border-bottom: 1px solid #969696;
 border-left: 1px solid #969696;
 `;
@@ -175,21 +175,22 @@ const MovieInfoComponent = (props) => {
         ) : (
           "Loading..."
         )}
-      </Container><Trailer>
+      </Container>
+      <Trailer>
           <VideoContainer>
-            <div className="App">
+            
               <MovieName>{movieInfo?.title} Trailer</MovieName>
               <br></br>
               <br></br>
               <YoutubeEmbed embedId={trailerInfo} />
 
-            </div>
+            
           </VideoContainer>
 
           <ChatContainer>
-
-            <ChatApp selectMovie={selectedMovie}/>
-          
+            
+            <ChatApp selectMovie={selectedMovie} movieTitle={movieInfo?.title}/>
+            
           
           
             

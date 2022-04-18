@@ -23,13 +23,18 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        margin: '50px',
-        padding: theme.spacing(3, 2),
+    card: {
+        //display: 'flex',
+        height: '100%',
+        width: '100%'
+    },
+    content: {
+        height: '100%'
     },
     flex: {
         display: 'flex',
         alignItems: 'center',
+        
         "& #youFlex":{
             justifyContent: 'flex-end',
             display: 'flex',
@@ -39,27 +44,21 @@ const useStyles = makeStyles(theme => ({
         }
         
     },
-    topicsWindow: {
-        width: '30%',
-        height: '300px',
-        borderRight: '1px solid grey'
-    },
+    
     chatWindow: {
+        display: 'block',
         width: '90%',
-        height: '212px',
+        height: '458px',
+        
         padding: '20px',
         
     },
     chatBox: {
+        
         width: '85%'
     },
     nicknameBox: {
-        "& #you":{
-            
-        },
-        "& #other":{
-            
-        },     
+        height: '40px !important'
         
     },
     button: {
@@ -68,54 +67,55 @@ const useStyles = makeStyles(theme => ({
         
     },
     message: {
-         
-       
-
-
+            
+    },
+    myMessage: {
+        background: '#33cc33',
+        
+        padding: '6px',
+        borderRadius: '10px',
+        margin: '1px',
+        
+    },
+    otherMessage: {
+        
+        padding: '5px',
+        paddingTop: '10px',
+        borderRadius: '10px',
+        margin: '1px',
+        marginLeft: '5px'
         
     },
     messageContainer: {
         height: '95%',
-        overflowY: 'scroll',
+        //maxHeight: '350px',
+        paddingBottom: '10px',
+        overflowY: 'hidden',
         overflowX: 'hidden',
-        "& #youMessage":{
-            
-            
-            background: 'green',
-            borderRadius: '10px',
-            padding: '2px',
-            margin: '1px',
-        },
-        "& #otherMessage":{
-            
-            
-            background: 'blue',
-            borderRadius: '10px',
-            padding: '2px',
-            margin: '1px',
-        },
-        "& #youNickname":{
-            display: 'none' 
-        },
-        "& #otherNickname":{
-            
-        },     
+        background: '#f2f2f2',
+        
+    },
+    myNickname: {
+        display: 'none'
+    },
+    otherNickname: {
+        padding: '5px'
     },
     chatHeader: {
-        height: '10px',
-        display: 'flex',
+        height: '5%',
+        
         alignItems: 'center',
-        border: '1px solid grey'
+        
     }
 }));
 
 
 
-function Chat({socket, username, room}){
+function Chat({socket, username, room, movieTitle}){
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
     
-
+    
     const sendMessage = async () => {
         if(currentMessage !== "")
         {
@@ -123,7 +123,7 @@ function Chat({socket, username, room}){
                 room: room,
                 author: username,
                 message: currentMessage,
-                time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes()
+                
             };
             //setCurrentRoom(room);
             
@@ -136,25 +136,37 @@ function Chat({socket, username, room}){
     }
 
     useEffect(() => {
-        // if(currentRoom === room)
-        // {
-            socket.on("receive_message", (data) =>{
+                socket.on("receive_message", (data) =>{
                 setMessageList((list) => [...list, data]);
             })
-    //     }else{
-    //         //socket.emit("room_disconnect");
-    //         socket.emit("join_room", room);
-    //         setMessageList([]);
-    //     }
-     }, [socket])
+            socket.on("join_message", (Author) =>{
+                
+                const joinMessageData = {
+                    room: room,
+                    author: "System:",
+                    message: Author + " has joined the " + movieTitle + " chat"
+                }
+                setMessageList((list) => [...list, joinMessageData]);
+                
+            })
+            socket.on("leave_message", (username) => {
+                const leaveMessageData = {
+                    room: room,
+                    author: "System:",
+                    message: username + " has left the " + movieTitle + " chat"
+                }
+                setMessageList((list) => [...list, leaveMessageData]);
+            })
+     }, [movieTitle, room, socket])
 
     const classes = useStyles();
 
     return(
-        <Card sx={{ maxHeight: 402}}>
-      <CardContent>
-        <Typography className={classes.chatHeader} variant = "h2" sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Chat App
+        //<Card sx={{ minWidth: '100%', minHeight: '100%', flex: '2' }}></Card>
+        <Card className={classes.card}>
+      <CardContent className={classes.content}>
+        <Typography className={classes.chatHeader} variant = "h4" sx={{ fontSize: 22 }} color="text.secondary">
+          {movieTitle} Chat
         </Typography>
         
         
@@ -166,16 +178,18 @@ function Chat({socket, username, room}){
                  return(
                 <div id={username === messageContent.author? "youFlex" : "otherFlex"}>
                 <div className={classes.flex} >
-                     <div id={username === messageContent.author? "youNickname" : "otherNickname"}>
-                    <div className={classes.nicknameBox}>
-                    <Chip avatar={<Avatar>{messageContent.author[0]}</Avatar>}label={messageContent.author} />
+                    <div className= {username === messageContent.author? classes.myNickname : classes.otherNickname}>
+                        <div className={classes.nicknameBox}>
+                            
+                            <Chip avatar={<Avatar>{messageContent.author[0]}</Avatar>}label={messageContent.author} className={classes.nicknameBox}/>
+                        </div>
                     </div>
-                    </div>
-                    <div id={username === messageContent.author? "youMessage" : "otherMessage"}>
-                    <div className={classes.message} >
+                    
+                    <div className={username === messageContent.author? classes.myMessage : classes.otherMessage} >
+                        
                         <Typography variant='body1' gutterBottom>{messageContent.message}</Typography>
                     </div>
-                    </div>
+                    
                 </div>
                 </div>
                 );

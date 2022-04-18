@@ -23,9 +23,14 @@ const io = new Server(server, {
 io.on('connection', function(socket){
     console.log(`a user connected: ${socket.id}`);
 
-    socket.on("join_room", function(data){
+    socket.on("join_room", function(data, author){
         
         socket.join(data);
+        if(author !== null)
+        {
+            io.to(data).emit("join_message" , author)
+        }
+        
         console.log(`User with Id: ${socket.id} joined room: ${data}` )
         
     })
@@ -38,9 +43,10 @@ io.on('connection', function(socket){
     //     console.log('messages: ' + JSON.stringify(msg));
     // });
     
-    socket.on("room_disconnect", (data) => {
-        socket.disconnect(data)
-        console.log("User Disconnected", socket.id);
+    socket.on("room_disconnect", (data, username) => {
+        socket.leave(data)
+        io.emit("leave_message" , username)
+        console.log(`User with Id: ${username} left room: ${data}` )
     });
 })
 
