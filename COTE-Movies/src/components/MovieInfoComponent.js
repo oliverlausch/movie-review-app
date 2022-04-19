@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { API_KEY } from "./Home";
 import YoutubeEmbed from "./YoutubeEmbed";
-
+import ReviewComponent from './ReviewComponent';
 import ChatApp from "./ChatApp"
 
 
@@ -148,7 +148,7 @@ const MovieInfoComponent = (props) => {
         
     return (
       
-            <><Container>
+      <><><Container>
         {movieInfo ? (
           <>            
             
@@ -196,8 +196,10 @@ const MovieInfoComponent = (props) => {
             
             
           </ChatContainer>
+          
         </Trailer></>
-        
+        <ReviewComponent />
+        </>
         )
           }
 
