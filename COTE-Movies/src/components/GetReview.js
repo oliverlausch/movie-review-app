@@ -1,5 +1,5 @@
 import * as Axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import React from 'react';
 import { Link } from "react-router-dom";
@@ -34,7 +34,7 @@ const Update = styled.button`
   cursor: pointer;
 `;
 
-function GetReviews() {
+function GetReview() {
 
 // Define setData
 // setData is review.id, post and rating. Store in memory using
@@ -53,6 +53,12 @@ function GetReviews() {
 
  // Define a state used to store the Review once called
   const [review, setReview] = useState([]);
+  //const [videoReview, setVideoReview] = useState('');
+
+  /*useEffect(() => {
+    setVideoReview(localStorage.getItem('VideoID'));
+    console.log(setVideoReview + "This is it")
+}, [])*/
 
   // Call API methods with axios
 
@@ -66,14 +72,19 @@ function GetReviews() {
     <Button onClick={getReviews}> Show Reviews </Button>
     <Button> Hide Reviews </Button>
    
+    {/*let GetReview = reviews.filter(function (review) {
+        return review.videoId === {videoId};
+    }).map(function (student) {
+        return student.name;
+    })*/}
+
+
     {review.map(review => (
       <ul key={review.id}>
         <br/>
-        <li className='List'><b>Review ID:</b> {review.id}</li>
         <li className='List'><b>Rating:</b> {review.rating}</li>
         <li className='List'><b>Post:</b> {review.post}</li>
         <li className='List'><b>Date:</b> {review.date}</li>
-        <li className='List'><b>IMDB ID:</b> {review.videoId}</li>
         <li className='List'><b>User ID:</b> {review.userId}</li>
         <br/>
         <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)}><Link to="/update">Update</Link></Update>
@@ -84,4 +95,4 @@ function GetReviews() {
   )
 }
 
-export default GetReviews;
+export default GetReview;

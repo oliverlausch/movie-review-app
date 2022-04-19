@@ -8,9 +8,9 @@ import MovieInfoComponent from "./MovieInfoComponent";
 
 //export const API_KEY = "k_4gvizmjv";
 //export const API_KEY = "k_6npoyq2n";
-export const API_KEY = "k_9uxy48gg";
+//export const API_KEY = "k_9uxy48gg";
 //export const API_KEY = "k_d5nc6sfs";
-//export const API_KEY = "k_atxl86be";
+export const API_KEY = "k_atxl86be";
 //export const API_KEY = "k_e1mhcbum";
 //export const API_KEY = "k_2xigzzuc";
 

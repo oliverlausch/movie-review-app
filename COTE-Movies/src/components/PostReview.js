@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './ReviewStyle.css';
 import styled from 'styled-components';
 
@@ -16,11 +16,9 @@ const Button = styled.button`
 
     function PostReview() {
     const url = "http://localhost:5000/api/Reviews"
-    //const [videoId, setVideoID] = useState('');
+    const [videoId, setVideoID] = useState('');
     
-    //useEffect(() => {
-    //    setVideoID(localStorage.getItem('VideoID'));
-    //}, [])
+   
     
     const [data, setData] = useState({
         id: 0,
@@ -38,7 +36,7 @@ const Button = styled.button`
         axios.post(url, {
             id: data.id,
             userId: data.userId,
-            videoId: data.videoId,
+            videoId: videoId,
             date: data.date,
             rating: data.rating,
             post: data.post
@@ -47,7 +45,9 @@ const Button = styled.button`
         })
 
     }
-
+ useEffect(() => {
+        setVideoID(localStorage.getItem('VideoID'));
+    }, )
 
     function handle(e) {
         const newData={...data}
@@ -63,8 +63,8 @@ const Button = styled.button`
             <form onSubmit={(e) => submit(e)}>
                 <input onChange={(e) => handle(e)} id = "userId" value={data.userId} placeholder="User ID" type="number"></input>
                 <br/>
-                <input onChange={(e) => handle(e)} id = "videoId" value={data.videoId} placeholder="IMDB Video id" type="string"></input>
-                <br/>
+                {/*<input onChange={(e) => handle(e)} id = "videoId" value={videoId} placeholder="IMDB Video id" type="string"></input>
+                <br/>*/}
                 <input onChange={(e) => handle(e)} id = "date" value={data.date} placeholder="date" type="date"></input>
                 <br/>
             Select Movie Rating: <select input

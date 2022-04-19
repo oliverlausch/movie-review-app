@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import GetReviews from './GetReviews';
+import GetReview from './GetReview';
 import PostReview from './PostReview';
 
 const Container = styled.div`
@@ -24,8 +24,8 @@ const ReviewComponent = () =>{
     <br/>
     <br/>
     <div>
-      {<GetReviews />}
-    {/*<GetReview />*/}
+      {/*<GetReviews />*/}
+    {<GetReview />}
     </div>
     </Container>
   )
