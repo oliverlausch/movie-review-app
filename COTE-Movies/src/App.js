@@ -44,8 +44,8 @@ align-items: center;
 `;
 
 const AppLogo = styled.img`
-width: 48px;
-height: 48px;
+width: 250px;
+height: 75px;
 margin: 15px;
 `;
 
@@ -54,7 +54,7 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-background-color: black;
+background: linear-gradient(to bottom, #000000 0%, #381a1a 102%);
 color: white;
 padding: 10px;
 font-size: 25px;
@@ -78,8 +78,7 @@ function App() {
       <nav>
         <Navbar>
         <AppName>
-            <AppLogo src="/VideocutLOGO.png" />
-            COTE-Movies
+            <AppLogo src="/COTE_Reviews-long-Tran.png" />
         </AppName>
           
           <Link to="/" className={classes.Link}><Button variant= "Contained" className={classes.button} onClick={"document.querySelector(#reload)"}>Home</Button></Link>
