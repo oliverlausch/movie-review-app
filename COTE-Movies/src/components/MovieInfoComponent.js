@@ -6,6 +6,8 @@ import YoutubeEmbed from "./YoutubeEmbed";
 import ReviewComponent from './ReviewComponent';
 import ChatApp from "./ChatApp"
 
+
+
 const Container = styled.div`
 display: flex;
 flex-direction: row;
@@ -19,7 +21,7 @@ display: flex;
 padding: 20px 30px;
 flex-direction: column;
 height: 100%;
-width: 50%;
+width: 100%;
 border-bottom: 1px solid #969696;
 `;
 
@@ -30,18 +32,16 @@ width: 100%;
 
 `;
 
-//const DashboardStyle = styled.div`
-//width: 50%;
-//padding: 10px 30px;
-//background: #708090;
-//justify-content: center;
-//`;
 
-const LiveChat = styled.div`
-width: 50%;
-padding: 10px 30px;
-background: #708090;
-justify-content: center;
+
+const ChatContainer = styled.div`
+display: flex;
+padding: 5px 15px;
+flex-direction: column;
+
+width: 100%;
+border-bottom: 1px solid #969696;
+border-left: 1px solid #969696;
 `;
 
 
@@ -51,12 +51,14 @@ object-fit: fill;
 height: 452px;
 margin-left: 10px;
 align-items: center;
+padding-Top: 150px;
 `;
 
 const InfoColumn = styled.div`
 display: flex;
 width: 100%;
 flex-direction: column;
+padding-Top: 120px;
 margin: 20px;
 `;
 
@@ -116,10 +118,6 @@ const MovieInfoComponent = (props) => {
     const [movieInfo, setMovieInfo] = useState();
 
     const [trailerInfo, setTrailerInfo] = useState();
-
-    const setData = (videoId) => {
-      localStorage.setItem('VideoID', selectedMovie)
-    } 
     
     // As selectedMovie is receiving the ImdbID, it needs to be a prop.
     //
@@ -141,21 +139,24 @@ const MovieInfoComponent = (props) => {
         
           // Get Request
         await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY}/${selectedMovie}`,).then((response) =>
-        setTrailerInfo(response.data.videoId),
-        setData()
-        );
+        setTrailerInfo(response.data.videoId));
         
         }; fetchTrailerInfo()}, );
+
+      // useEffect(() => {
+      //   const fetchChatApp = async () => {
+      //     ChatApp();
+      //   }; ChatApp()}, );
         
     return (
       
             <><><Container>
         {movieInfo ? (
-          <>
-
+          <>            
+            
             <CoverImage src={movieInfo?.image} alt={movieInfo?.title} />
             <InfoColumn>
-              <MovieName><span>{movieInfo?.title}</span></MovieName>
+            <MovieName><span>{movieInfo?.title}</span></MovieName>
               <MovieInfo>Type: <span>{movieInfo?.type}</span></MovieInfo>
               <MovieInfo>Director: <span>{movieInfo?.directors}</span></MovieInfo>
               <MovieInfo>IMDB Rating: <span>{movieInfo.imDbRating}</span></MovieInfo>
@@ -170,41 +171,36 @@ const MovieInfoComponent = (props) => {
               <MovieInfo>Genre: <span>{movieInfo?.genres}</span></MovieInfo>
               <MovieInfo>Description: <Desc><span>{movieInfo?.plot}</span></Desc></MovieInfo>
             </InfoColumn>
-
+            
             <Close onClick={() => props.onMovieSelect()}>X</Close>
           </>
         ) : (
           "Loading..."
         )}
-      </Container><Trailer>
+      </Container>
+      <Trailer>
           <VideoContainer>
-            <div className="App">
+            
               <MovieName>{movieInfo?.title} Trailer</MovieName>
               <br></br>
               <br></br>
               <YoutubeEmbed embedId={trailerInfo} />
 
-            </div>
+            
           </VideoContainer>
 
-          <LiveChat>
-
-            <ChatApp selectMovie={selectedMovie} />
-
-
-
-
-            <div className="App">
-
-
-              <br></br>
-              <br></br>
-            </div>
-          </LiveChat>
+          <ChatContainer>
+            
+            <ChatApp selectMovie={selectedMovie} movieTitle={movieInfo?.title}/>
+            
+          
+          
+            
+            
+          </ChatContainer>
         </Trailer></>
         <ReviewComponent />
-        </>
-        
+                 </>
         )
           }
 

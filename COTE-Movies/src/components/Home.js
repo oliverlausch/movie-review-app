@@ -30,9 +30,13 @@ align-items: center;
 background-color: black;
 color: white;
 padding: 10px;
+padding-Top: 110px;
 font-size: 25px;
-font-weight: bold;
+font-weight: ;
 box-shadow: 0 3px 6px 0 #555;
+position: fixed;
+width: 100%;
+z-index:9998;
 `;
 
 const SearchBox = styled.div`
@@ -64,6 +68,7 @@ border: none;
 outline: none;
 margin-left: 12px;
 text-transform: capitalize;
+
 `;
 
 const MovieListContainer = styled.div`
@@ -71,6 +76,7 @@ display: flex;
 flex-direction: row;
 flex-wrap: wrap;
 padding: 30px;
+padding-top: 175px;
 justify-content: space-evenly;
 gap: 24px;
 `;
