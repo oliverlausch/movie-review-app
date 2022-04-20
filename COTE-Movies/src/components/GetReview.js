@@ -36,6 +36,8 @@ const Update = styled.button`
 
 function GetReview() {
 
+  const [vid, setVID] = useState('');
+
 // Define setData
 // setData is review.id, post and rating. Store in memory using
 // local storage for use later in Update.
@@ -67,6 +69,13 @@ function GetReview() {
       (response) => setReview(response.data));
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    setVID(localStorage.getItem('VideoID'));
+}, )
+
+const VidReview = review.filter(review => review.videoId === vid)
+
   return (
     <div>
     <Button onClick={getReviews}> Show Reviews </Button>
@@ -74,13 +83,12 @@ function GetReview() {
    
     {/*let GetReview = reviews.filter(function (review) {
         return review.videoId === {videoId};
-    }).map(function (student) {
-        return student.name;
+    }).map(function (review) {
+        return review.post;
     })*/}
 
-
-    {review.map(review => (
-      <ul key={review.id}>
+    {VidReview.map(review => (
+      <ul key={review}>
         <br/>
         <li className='List'><b>Rating:</b> {review.rating}</li>
         <li className='List'><b>Post:</b> {review.post}</li>

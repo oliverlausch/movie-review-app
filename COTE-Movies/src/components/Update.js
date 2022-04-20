@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import './ReviewStyle.css';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
 display: flex;
@@ -136,7 +137,7 @@ const Button = styled.button`
                         placeholder='Post'
                         onChange={(e) => setPost(e.target.value)}
                     />
-                <Button>Update</Button>
+                <Button>Update</Button><Button><Link to="/">Return to Home</Link></Button>
             </form>
         </Container>
     </div>

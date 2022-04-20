@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\olive\\OneDrive\\Documents\\VS Code\\Cote_Reviews\\api\\API.csproj": {}
+    "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\olive\\OneDrive\\Documents\\VS Code\\Cote_Reviews\\api\\API.csproj": {
+    "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\olive\\OneDrive\\Documents\\VS Code\\Cote_Reviews\\api\\API.csproj",
+        "projectUniqueName": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\olive\\OneDrive\\Documents\\VS Code\\Cote_Reviews\\api\\API.csproj",
+        "projectPath": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj",
         "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\olive\\OneDrive\\Documents\\VS Code\\Cote_Reviews\\api\\obj\\",
+        "outputPath": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\olive\\AppData\\Roaming\\NuGet\\NuGet.Config",
