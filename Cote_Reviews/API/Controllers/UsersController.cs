@@ -70,7 +70,7 @@ namespace API.Controllers
 
         // Update a User profile
 
-        [HttpPut]
+        [HttpPut("{userId}")]
         public async Task<ActionResult> UpdateUser(User newUser, int userId)
         {
             var user = await _context.Users.FindAsync(userId);

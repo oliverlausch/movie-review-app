@@ -14,9 +14,15 @@ import './Home.css';
 //export const API_KEY = "k_9uxy48gg";
 // export const API_KEY = "k_d5nc6sfs";
 //export const API_KEY = "k_atxl86be";
+<<<<<<< HEAD
 // export const API_KEY = "k_e1mhcbum";
 //export const API_KEY = "k_2xigzzuc";
 export const API_KEY = "k_3dmz78gz";
+=======
+//export const API_KEY = "k_e1mhcbum";
+//export const API_KEY = "k_2xigzzuc";
+export const API_KEY = "k_g4y3s53m";
+>>>>>>> becea5c5 (Added User CRUD, update and delete forms, updated Admin Panel)
 
 var first_count = true;
 //var search_header = "";
