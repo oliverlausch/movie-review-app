@@ -8,7 +8,6 @@ import SignUp from "./components/SignUp"
 import Admin from "./components/Admin"
 import Update from "./components/Update"
 import Delete from "./components/Delete"
-import Search from "./components/Search"
 
 const useStyles = makeStyles(theme => ({
   button:{
@@ -45,7 +44,7 @@ function App() {
           <Route path="/admin" element={ <Admin/> } />
           <Route path="/update" element={ <Update/> } />
           <Route path="/delete" element={ <Delete/> } />
-          <Route path="/search" element={ <Search/> } />
+          <Route path="/admin" element={ <Admin/> } />
         </Routes>
       </Router>
     </div>

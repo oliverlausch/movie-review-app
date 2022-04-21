@@ -9,14 +9,23 @@ import './Home.css';
 
 // API keys
 
+<<<<<<< Updated upstream
 export const API_KEY = "k_4gvizmjv";
+=======
+// export const API_KEY = "k_4gvizmjv";
+>>>>>>> Stashed changes
 //export const API_KEY = "k_6npoyq2n";
 //export const API_KEY = "k_9uxy48gg";
 // export const API_KEY = "k_d5nc6sfs";
-//export const API_KEY = "k_atxl86be";
+export const API_KEY = "k_atxl86be";
 // export const API_KEY = "k_e1mhcbum";
+<<<<<<< Updated upstream
 //export const API_KEY = "k_2xigzzuc";
 //export const API_KEY = "k_3dmz78gz";
+=======
+// export const API_KEY = "k_2xigzzuc";
+// export const API_KEY = "k_3dmz78gz";
+>>>>>>> Stashed changes
 
 var first_count = true;
 //var search_header = "";
@@ -32,7 +41,9 @@ const SearchBox = styled.div`
 display: flex;
 flex-direction: row;
 padding-top: 50px;
-background: url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
+background: black; 
+opacity: 0.4;
+// url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
 align-items: center;
 z-index: 1000;
 `;

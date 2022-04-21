@@ -11,28 +11,31 @@ import ChatApp from "./ChatApp"
 const Container = styled.div`
 display: flex;
 flex-direction: row;
-padding: 20px 30px;
+padding-Top: 20px;
 justify-content: left;
-border-bottom: 1px solid #969696;
+background: black;
+opacity: 0.9;
 `;
 
 const VideoContainer = styled.div`
 display: flex;
-padding: 20px 30px;
+padding: 10px 30px;
 flex-direction: column;
 height: 100%;
 width: 100%;
 border-bottom: 1px solid #969696;
+background: black;
+opacity: 0.9;
 `;
 
 const Trailer = styled.div`
 display: flex;
-flex-direction: right;
+justify-content:left;
 width: 100%;
+background: white;
+border-top: 1px solid #969696;
 
 `;
-
-
 
 const ChatContainer = styled.div`
 display: flex;
@@ -51,54 +54,55 @@ object-fit: fill;
 height: 452px;
 margin-left: 10px;
 align-items: center;
-padding-Top: 150px;
+padding-Top: 20px;
 `;
 
 const InfoColumn = styled.div`
 display: flex;
 width: 100%;
 flex-direction: column;
-padding-Top: 120px;
+padding-Top: 10px;
 margin: 20px;
 `;
 
 const MovieName = styled.span`
-font-size: 22px;
+font-size: 30px;
 font-weight: 600;
-color: black;
+color: white;
 margin: 15px 0;
 white-space: nowrap;
 text-transform: capitalize;
 text-overflow: ellipsis;
 overflow: hidden;
 & span {
-    opacity: 0.8;
+    opacity: 1;
 }
 `;
 
 const MovieInfo = styled.span`
 
 font-size: 16px;
+padding: 5px;
 font-weight: 500;
-color: black;
+color: white;
 overflow: hidden;
 text-transform: capitalize;
 text-overflow: ellipsis;
 & span {
-    opacity: 0.5;
+    font-style: italic;
 }
 `;
 
 const Close = styled.span`
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   color: white;
   background: black;
   height: fit-content;
-  padding: 8px;
+  padding-right: 50px;
   border-radius: 0%;
   cursor: pointer;
-  opacity: 0.8;
+  opacity: 1;
 `;
 
 const Desc = styled.div`

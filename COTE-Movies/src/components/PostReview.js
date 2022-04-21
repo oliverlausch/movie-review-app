@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
-import './ReviewStyle.css';
+import '../components/PostReview.css';
 import styled from 'styled-components';
 
 
@@ -12,6 +12,19 @@ const Button = styled.button`
   border-radius: 5px;
   margin: 10px 0px;
   cursor: pointer;
+`;
+const PostReviewDiv = styled.div`
+background-color: hotpink;
+`;
+const Text1 = styled.text`
+color: white;
+font-size: 32px;
+font-weight: bold;
+`;
+const Text2 = styled.text`
+color: white;
+font-size: 20px;
+font-style: italic;
 `;
 
     function PostReview() {
@@ -57,8 +70,8 @@ const Button = styled.button`
         console.log(newData)
     }
   return (
-    <div>
-        <h1>Post Review</h1>
+    <PostReviewDiv>
+        <Text1>Post Review</Text1>
 
         
             <form onSubmit={(e) => submit(e)}>
@@ -68,7 +81,7 @@ const Button = styled.button`
                 <br/>*/}
                 <input onChange={(e) => handle(e)} id = "date" value={data.date} placeholder="date" type="date"></input>
                 <br/>
-            Select Movie Rating: <select input
+            <Text2>Select Movie Rating: </Text2><select input
                         value={data.rating}
                         placeholder='Movie rating'
                         onChange={(e) => handle(e)}
@@ -85,7 +98,7 @@ const Button = styled.button`
                 <textarea rows={6} placeholder = "Write review here..." onChange={(e) => handle(e)} id = "post" value={data.post} type="text"></textarea>
                 <Button>Submit</Button>
             </form>
-    </div>
+    </PostReviewDiv>
   )
 }
 

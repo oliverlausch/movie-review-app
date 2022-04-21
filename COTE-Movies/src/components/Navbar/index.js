@@ -16,7 +16,7 @@ const Navbar = () => {
             <NavLink to="/signup" activeStyle>
                 Register
             </NavLink>
-            <NavLink to="/search" activeStyle>
+            <NavLink to="/admin" activeStyle>
                 Admin
             </NavLink>
         </NavMenu>

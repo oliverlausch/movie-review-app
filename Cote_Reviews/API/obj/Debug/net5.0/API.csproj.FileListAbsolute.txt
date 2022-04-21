@@ -110,6 +110,12 @@ C:/Users/olive/OneDrive/Documents/GitHub/react-movies/Cote_Reviews/API/obj/Debug
 C:/Users/olive/OneDrive/Documents/GitHub/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.pdb
 C:/Users/olive/OneDrive/Documents/GitHub/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.genruntimeconfig.cache
 C:/Users/olive/OneDrive/Documents/GitHub/react-movies/Cote_Reviews/API/obj/Debug/net5.0/ref/API.dll
+<<<<<<< Updated upstream
+=======
+/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.dll
+/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/ref/API.dll
+/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.pdb
+>>>>>>> Stashed changes
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/bin/Debug/net5.0/appsettings.Development.json
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/bin/Debug/net5.0/appsettings.json
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/bin/Debug/net5.0/API.deps.json
@@ -162,7 +168,10 @@ C:/Users/olive/OneDrive/Documents/GitHub/react-movies/Cote_Reviews/API/obj/Debug
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/scopedcss/bundle/API.styles.css
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.RazorTargetAssemblyInfo.cache
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.csproj.CopyComplete
+<<<<<<< Updated upstream
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.dll
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/ref/API.dll
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.pdb
+=======
+>>>>>>> Stashed changes
 /Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/Debug/net5.0/API.genruntimeconfig.cache
