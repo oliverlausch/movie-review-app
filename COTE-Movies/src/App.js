@@ -8,11 +8,8 @@ import SignUp from "./components/SignUp"
 import Admin from "./components/Admin"
 import Update from "./components/Update"
 import Delete from "./components/Delete"
-<<<<<<< Updated upstream
-=======
 import UpdateUser from "./components/Users/UpdateUser"
 import DeleteUser from "./components/Users/DeleteUser"
->>>>>>> Stashed changes
 
 const useStyles = makeStyles(theme => ({
   button:{
@@ -49,12 +46,8 @@ function App() {
           <Route path="/admin" element={ <Admin/> } />
           <Route path="/update" element={ <Update/> } />
           <Route path="/delete" element={ <Delete/> } />
-<<<<<<< Updated upstream
-          <Route path="/admin" element={ <Admin/> } />
-=======
           <Route path="/update-user" element={ <UpdateUser/> } />
         <Route path="/delete-user" element={ <DeleteUser/> } />
->>>>>>> Stashed changes
         </Routes>
       </Router>
     </div>

@@ -3,8 +3,6 @@ import GetReviews from './GetReviews';
 import { makeStyles } from '@material-ui/core/Styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
-<<<<<<< Updated upstream
-=======
 import GetUsers from './Users/GetUsers';
 import styled from 'styled-components';
 
@@ -15,7 +13,6 @@ padding: 20px;
 justify-content: even;
 border-bottom: 1px solid #969696;
 `;
->>>>>>> Stashed changes
 
 const useStyles = makeStyles(theme => ({
     Admin:{
@@ -32,10 +29,10 @@ function Admin() {
         <div className={classes.Admin}>
         <h1>Welcome to the Admin Dashboard</h1>
         
-        {/* <Container>
+        <Container>
             <GetUsers />
             <GetReviews /> 
-        </Container> */}
+        </Container>
        
         
         </div>

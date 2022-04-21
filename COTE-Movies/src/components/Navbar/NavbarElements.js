@@ -46,12 +46,7 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-<<<<<<< Updated upstream
-  // margin-right: -24px;
-  width: 100vw;
-=======
   width: 16vw;
->>>>>>> Stashed changes
   white-space: nowrap;
 
   @media screen and (max-width: 768px) {
@@ -71,14 +66,6 @@ export const NavBtn = styled.nav`
   }
 `;
 
-<<<<<<< Updated upstream
-export const AdminNavBtn = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  
-  width: 21vw;
-=======
 export const Button = styled.nav`
   display: flex;
   align-items: center;
@@ -88,7 +75,6 @@ export const Button = styled.nav`
   @media screen and (max-width: 768px) {
     display: none;
   }
->>>>>>> Stashed changes
 `;
 
 export const NavBtnLink = styled(Link)`
