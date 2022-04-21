@@ -8,19 +8,9 @@ import Footer from './Footer';
 import './Home.css';
 
 // API keys
-
-// export const API_KEY = "k_4gvizmjv";
-//export const API_KEY = "k_6npoyq2n";
-//export const API_KEY = "k_9uxy48gg";
-// export const API_KEY = "k_d5nc6sfs";
-export const API_KEY = "k_atxl86be";
-// export const API_KEY = "k_e1mhcbum";
-//export const API_KEY = "k_2xigzzuc";
-//export const API_KEY = "k_3dmz78gz";
-//export const API_KEY = "k_atxl86be";
-//export const API_KEY = "k_e1mhcbum";
-//export const API_KEY = "k_2xigzzuc";
-//export const API_KEY = "k_3dmz78gz";
+const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
+const API_KEY_COUNT = 0
+export const API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
 
 var first_count = true;
 //var search_header = "";
@@ -88,9 +78,14 @@ function Home() {
   const [selectedMovie, onMovieSelect] = useState();
   
   
-  
+  const changeKey = () => {
+    API_KEY_COUNT++
+    if (API_KEY_COUNT == API_KEY_ARRAY.length){ API_KEY_COUNT = 0 }
+    API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
+  }
+
+
   // API call
-  
   const fetchData = async (searchString) => {
     // eslint-disable-next-line eqeqeq
     if (searchString == null || searchString == "") {

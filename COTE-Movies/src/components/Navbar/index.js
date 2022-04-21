@@ -1,4 +1,5 @@
 import React from 'react'
+import changeKey from '../Home';
 import {Nav, NavLink, NavMenu, NavBtn, NavBtnLink, Bars, Button} from './NavbarElements'
 
 const Navbar = () => {
@@ -10,6 +11,7 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
+        <Button onClick={changeKey}><NavLink to= "/">API Key</NavLink></Button>
         <Button onClick={"document.querySelector(#reload)"}><NavLink to="/#" activeStyle>
                 Home
             </NavLink></Button>
