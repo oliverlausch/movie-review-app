@@ -2,51 +2,60 @@ import axios from 'axios';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import Navbar from './Navbar';
+import Footer from './Footer';
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const Container = styled.div`
 display: flex;
 flex-direction: column;
-padding: 10px 10px;
-border-radius: 6px;
-margin-left: 20px;
-margin-right: 15px;
-width: 70%;
-height: 25px;
-align-items: left;
-`;
-
-//const FormTemplate = styled.div`
-//background: #fff;
-//padding: 20px;
-//width: 50%;
-//`;
-
-const Button = styled.button`
-  background-color:  #1b36ef;
-  color: #fff;
-  font-size: 20px;
-  padding: 8px 10px;
-  border-radius: 25px;
-  width: 20%;
-  margin: 10px 0px;
-  cursor: pointer;
+justify-content: center;
+align-items: center;
+padding-top: 190px;
+padding-bottom: 80px;
 `;
 
 const ButtonFlex = styled.div`
 display: flex;
 flex-direction: column;
-gap: 10px;
-width: 40%;
 padding-bottom: 17px;
+gap: 10px;
+width: 25em;
 `;
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      //marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      paddingTop: '120px',
+      fontfamily: "Helvetica"
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
     function SignUp() {
     
-    const [userId, setUser] = useState('');
+    //const [userId, setUser] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [dateRegistered, setDateRegistered] = useState('');
+    //const [dateRegistered, setDateRegistered] = useState('');
     const navigate = useNavigate();
     var today = new Date();
 
@@ -79,49 +88,105 @@ padding-bottom: 17px;
       setData(newData)
       console.log(newData)
   }
-
+  const classes = useStyles();
 
 
   return (
-    <div>
-        <Container>
-        <h2>Sign Up Form</h2>
+    <><Navbar /><div>
+          <Container>
+          <Avatar className={classes.avatar}></Avatar><h1>Sign Up Form</h1>
 
-            {/*<FormTemplate>*/}
-            <form onSubmit={(e) => submit(e)}>
-            <ButtonFlex>
-                {/*User ID:
-                <input
-                        value={userId}
-                        placeholder='User Id#'
-                        onChange={(e) => setUser(e.target.value)}
-  />*/}
-                Name:
-                <input
-                        value={name}
-                        placeholder='Name / Nickname'
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                Email Address:
-            <input
-                        value={email}
-                        placeholder='Email'
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-               {/*Date Registered:
-            <input
-                        value={dateRegistered}
-                        type={'datetime-local'}
-                        placeholder='Registration Date'
-                        onChange={(e) => setDateRegistered(e.target.value)}
-  />*/}
-            </ButtonFlex>
-                <Button>Register</Button><Button><Link to="/admin">Return to Dashboard</Link></Button>
-                
-            </form>
-        {/*</FormTemplate>*/}
-        </Container>
-    </div>
+              {/*<FormTemplate>*/}
+              <form onSubmit={(e) => submit(e)}>
+                  <ButtonFlex>
+                      {/*User ID:
+    <input
+            value={userId}
+            placeholder='User Id#'
+            onChange={(e) => setUser(e.target.value)}
+/>*/}
+                      {/*Name:
+                      <input
+                          value={name}
+                          placeholder='Name / Nickname'
+                          onChange={(e) => setName(e.target.value)} />
+                      {/*
+                      Email Address:
+                      <input
+                          value={email}
+                          placeholder='Email'
+onChange={(e) => setEmail(e.target.value)} />*/}
+
+<TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="name"
+                      label="Name"
+                      name="name"
+                      autoFocus
+                      onChange={(e) => setName(e.target.value)}
+                      />
+
+
+
+
+                      <TextField
+                      variant="outlined"
+                      margin="normal"
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                      autoFocus
+                      onChange={(e) => setEmail(e.target.value)}
+                      />
+
+                      <TextField
+                          variant="outlined"
+                          margin="normal"
+                          required
+                          fullWidth
+                          name="password"
+                          label="Password"
+                          type="password"
+                          id="password"
+                      />
+
+                      {/*
+                      Password:
+                      <input
+                          value={''}
+                          placeholder='Enter password'
+                          onChange={(e) => setEmail(e.target.value)} />
+                      {/*Date Registered:
+ <input
+             value={dateRegistered}
+             type={'datetime-local'}
+             placeholder='Registration Date'
+             onChange={(e) => setDateRegistered(e.target.value)}
+/>*/}
+                  </ButtonFlex>
+                  <Link href="/signin" variant="body2">
+                {"Already have an account? Sign In"}
+              </Link>
+              <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Register
+          </Button>
+
+              </form>
+          </Container>
+      <Footer /><br/></div></>
+      
   )
 }
 

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 
 const Button = styled.button`
-  background-color: black;
+  background-color:   black;
   color: white;
   font-size: 20px;
   padding: 10px 60px;
@@ -18,12 +18,12 @@ background-color: black;
 opacity: 0.9;
 `;
 const Text1 = styled.text`
-color: red;
+color: #ff324d;
 font-size: 32px;
 font-weight: bold;
 `;
 const Text2 = styled.text`
-color: green;
+color: white;
 font-size: 20px;
 font-style: italic;
 `;
@@ -89,7 +89,7 @@ font-style: italic;
                         onChange={(e) => handle(e)}
                         id = "rating">
                         
-                        
+                        <option value="">----------</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>

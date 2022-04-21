@@ -11,7 +11,7 @@ import './Home.css';
 const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
 const API_KEY_COUNT = 0
 //export const API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
-export const API_KEY = "k_9uxy48gg";
+export const API_KEY = "k_6npoyq2n";
 
 var first_count = true;
 //var search_header = "";
@@ -26,9 +26,12 @@ background: url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat cent
 const SearchBox = styled.div`
 display: flex;
 flex-direction: row;
-padding-top: 50px;
+padding-top: 115px;
+padding-bottom: 15px;
+border-bottom: 10px;
+
 background: black; 
-opacity: 0.4;
+opacity: 0.9;
 // url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
 align-items: center;
 z-index: 1000;
@@ -38,7 +41,7 @@ const SearchIcon = styled.img`
  width: 60px;
  height: 60px;
  cursor: pointer;
- margin-left: 188px
+ margin-left: 188px;
 `;
 
 const SearchInput = styled.input`

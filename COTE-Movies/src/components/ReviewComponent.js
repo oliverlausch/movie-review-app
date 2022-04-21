@@ -8,6 +8,8 @@ flex-direction: column;
 padding: 20px 20px;
 justify-content: left;
 border-bottom: 1px solid #969696;
+background: black;
+opacity: .9;
 `;
 
 const ReviewComponent = () =>{

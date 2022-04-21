@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Button = styled.button`
+/*const Button = styled.button`
   background-color: black;
   color: white;
   font-size: 20px;
@@ -12,26 +12,54 @@ const Button = styled.button`
   border-radius: 5px;
   margin: 10px 0px;
   cursor: pointer;
+  background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
+`;*/
+
+const Button = styled.button`
+background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+        borderRadius: 3,
+        border: 0,
+        height: 48,
+        padding: '0 30px',
+        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 10px;
 `;
 
 const Delete = styled.button`
-  background-color:#7d090d;
+  background-color: silver;
   color: white;
   font-size: 20px;
   padding: 10px 60px;
   border-radius: 5px;
-  margin: 10px 0px;
+  margin: 10px 10px;
   cursor: pointer;
 `;
 
 const Update = styled.button`
-  background-color: #d67b0b;
-  color: black;
+  background-color: silver;
+  color: white;
+  decoration: none;
   font-size: 20px;
   padding: 10px 60px;
   border-radius: 5px;
   margin: 10px 0px;
   cursor: pointer;
+`;
+
+const Container = styled.div`
+width: 100%;
+height: 100%;
+align-items: left;
+background: black;
+opacity: 0.9;
+color: #fff;
+list-style-type: none;
 `;
 
 function GetReview() {
@@ -90,6 +118,7 @@ const VidReview = review.filter(review => review.videoId === vid)
     {VidReview.map(review => (
       <ul key={review}>
         <br/>
+        <Container>
         <li className='List'><b>Rating:</b> {review.rating}</li>
         <li className='List'><b>Post:</b> {review.post}</li>
         <li className='List'><b>Date:</b> {review.date}</li>
@@ -97,6 +126,7 @@ const VidReview = review.filter(review => review.videoId === vid)
         <br/>
         <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)}><Link to="/update">Update</Link></Update>
         <Delete onClick={() => setData(review.id)}><Link to="/delete">Remove</Link></Delete>
+        </Container>
         </ul>
     ))}
     </div>
