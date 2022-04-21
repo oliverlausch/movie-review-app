@@ -1256,26 +1256,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\olive\\.nuget\\packages\\": {}
+    "/Users/callumtremayne/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj",
+      "projectUniqueName": "/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\olive\\OneDrive\\Documents\\GitHub\\react-movies\\Cote_Reviews\\API\\obj\\",
+      "projectPath": "/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/API.csproj",
+      "packagesPath": "/Users/callumtremayne/.nuget/packages/",
+      "outputPath": "/Users/callumtremayne/Documents/Uni Documents/MSc Computing/System Design and Development/COTE Reviews/react-movies/Cote_Reviews/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\olive\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/callumtremayne/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1331,7 +1329,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.406/RuntimeIdentifierGraph.json"
       }
     }
   }
