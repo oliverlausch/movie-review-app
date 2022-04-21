@@ -1,120 +1,127 @@
-import React from "react";
-import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+import axios from 'axios';
+import React, { useState } from "react";
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-  "@global": {
-    body: {
-      backgroundColor: theme.palette.common.white
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+padding: 10px 10px;
+border-radius: 6px;
+margin-left: 20px;
+margin-right: 15px;
+width: 70%;
+height: 25px;
+align-items: left;
+`;
+
+//const FormTemplate = styled.div`
+//background: #fff;
+//padding: 20px;
+//width: 50%;
+//`;
+
+const Button = styled.button`
+  background-color:  #1b36ef;
+  color: #fff;
+  font-size: 20px;
+  padding: 8px 10px;
+  border-radius: 25px;
+  width: 20%;
+  margin: 10px 0px;
+  cursor: pointer;
+`;
+
+const ButtonFlex = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
+width: 40%;
+padding-bottom: 17px;
+`;
+
+    function SignUp() {
+    
+    const [userId, setUser] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [dateRegistered, setDateRegistered] = useState('');
+    const navigate = useNavigate();
+
+    const url = `http://localhost:5000/api/Users/`
+
+    const [data, setData] = useState({
+      userId: "", 
+      dateRegistered: "",
+      email: "",
+      name: ""
+  })
+
+    function submit(e) {
+        // Prevent the form from refreshing the page upon submission,
+        // And send the form instead, to our API via POST method!
+        e.preventDefault();
+        axios.post(url, {
+            userId: userId,
+            dateRegistered: dateRegistered,
+            email: email,
+            name: name
+        }).then(() => {
+            navigate("/admin");
+        })
     }
-  },
-  paper: {
-    paddingTop: '120px',
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
-}));
 
-export default function SignUp() {
-  const classes = useStyles();
+    function handle(e) {
+      const newData={...data}
+      newData[e.target.id] = e.target.value
+      setData(newData)
+      console.log(newData)
+  }
+
+
 
   return (
-    <>
-    <Navbar />
-    <Container component="main" maxWidth="xs">
-      
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/signin" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-      </Box>
-    </Container>
-    <Footer />
-  );
-  </>
+    <div>
+        <Container>
+        <h2>Sign Up Form</h2>
 
-    ) 
-  
-  
+            {/*<FormTemplate>*/}
+            <form onSubmit={(e) => submit(e)}>
+            <ButtonFlex>
+                User ID:
+                <input
+                        value={userId}
+                        placeholder='User Id#'
+                        onChange={(e) => setUser(e.target.value)}
+                    />
+                Name:
+                <input
+                        value={name}
+                        placeholder='Name / Nickname'
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                Email Address:
+            <input
+                        value={email}
+                        placeholder='Email'
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+               Date Registered:
+            <input
+                        value={dateRegistered}
+                        type={'datetime-local'}
+                        placeholder='Registration Date'
+                        onChange={(e) => setDateRegistered(e.target.value)}
+                    />
+            </ButtonFlex>
+                <Button>Register</Button><Button><Link to="/admin">Return to Dashboard</Link></Button>
+                
+            </form>
+        {/*</FormTemplate>*/}
+        </Container>
+    </div>
+  )
 }
+
+export default SignUp;

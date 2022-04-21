@@ -3,6 +3,19 @@ import GetReviews from './GetReviews';
 import { makeStyles } from '@material-ui/core/Styles';
 import Navbar from './Navbar';
 import Footer from './Footer';
+<<<<<<< Updated upstream
+=======
+import GetUsers from './Users/GetUsers';
+import styled from 'styled-components';
+
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+padding: 20px;
+justify-content: even;
+border-bottom: 1px solid #969696;
+`;
+>>>>>>> Stashed changes
 
 const useStyles = makeStyles(theme => ({
     Admin:{
