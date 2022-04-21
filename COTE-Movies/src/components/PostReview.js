@@ -14,15 +14,16 @@ const Button = styled.button`
   cursor: pointer;
 `;
 const PostReviewDiv = styled.div`
-background-color: hotpink;
+background-color: black;
+opacity: 0.9;
 `;
 const Text1 = styled.text`
-color: white;
+color: red;
 font-size: 32px;
 font-weight: bold;
 `;
 const Text2 = styled.text`
-color: white;
+color: green;
 font-size: 20px;
 font-style: italic;
 `;
@@ -30,6 +31,7 @@ font-style: italic;
     function PostReview() {
     const url = "http://localhost:5000/api/Reviews"
     const [videoId, setVideoID] = useState('');
+    var today = new Date();
     
    
     
@@ -37,7 +39,7 @@ font-style: italic;
         id: 0,
         userId: "", 
         videoId: "",
-        date: "",
+        date: today,
         rating: "",
         post: ""
     })
@@ -79,8 +81,8 @@ font-style: italic;
                 <br/>
                 {/*<input onChange={(e) => handle(e)} id = "videoId" value={videoId} placeholder="IMDB Video id" type="string"></input>
                 <br/>*/}
-                <input onChange={(e) => handle(e)} id = "date" value={data.date} placeholder="date" type="date"></input>
-                <br/>
+                {/*<input onChange={(e) => handle(e)} id = "date" value={data.date} placeholder="date" type="date"></input>
+                <br/>*/}
             <Text2>Select Movie Rating: </Text2><select input
                         value={data.rating}
                         placeholder='Movie rating'

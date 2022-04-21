@@ -48,12 +48,13 @@ padding-bottom: 17px;
     const [email, setEmail] = useState('');
     const [dateRegistered, setDateRegistered] = useState('');
     const navigate = useNavigate();
+    var today = new Date();
 
-    const url = `http://localhost:5000/api/Users/`
+    const url = "http://localhost:5000/api/Users"
 
     const [data, setData] = useState({
-      userId: "", 
-      dateRegistered: "",
+      userId: 0, 
+      dateRegistered: today,
       email: "",
       name: ""
   })
@@ -63,8 +64,8 @@ padding-bottom: 17px;
         // And send the form instead, to our API via POST method!
         e.preventDefault();
         axios.post(url, {
-            userId: userId,
-            dateRegistered: dateRegistered,
+            userId: data.userId,
+            dateRegistered: today,
             email: email,
             name: name
         }).then(() => {
@@ -89,12 +90,12 @@ padding-bottom: 17px;
             {/*<FormTemplate>*/}
             <form onSubmit={(e) => submit(e)}>
             <ButtonFlex>
-                User ID:
+                {/*User ID:
                 <input
                         value={userId}
                         placeholder='User Id#'
                         onChange={(e) => setUser(e.target.value)}
-                    />
+  />*/}
                 Name:
                 <input
                         value={name}
@@ -107,13 +108,13 @@ padding-bottom: 17px;
                         placeholder='Email'
                         onChange={(e) => setEmail(e.target.value)}
                     />
-               Date Registered:
+               {/*Date Registered:
             <input
                         value={dateRegistered}
                         type={'datetime-local'}
                         placeholder='Registration Date'
                         onChange={(e) => setDateRegistered(e.target.value)}
-                    />
+  />*/}
             </ButtonFlex>
                 <Button>Register</Button><Button><Link to="/admin">Return to Dashboard</Link></Button>
                 
