@@ -24,6 +24,7 @@ var first_count = true;
 const Container = styled.div`
 display: flex;
 flex-direction: column;
+
 background: url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
 `;
 

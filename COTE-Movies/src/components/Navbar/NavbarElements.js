@@ -8,7 +8,9 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   padding: 0.5rem calc((100vw - 1000px) / 2);
-  z-index: 100;
+  z-index: 2000;
+  position: fixed;
+  width:68%;
 
 `;
 
@@ -44,7 +46,7 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
+  // margin-right: -24px;
   width: 100vw;
   white-space: nowrap;
 
@@ -57,11 +59,20 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 20vw;
+  margin-left: 100px;
+  width: 21vw;
 
   @media screen and (max-width: 768px) {
     display: none;
   }
+`;
+
+export const AdminNavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+  width: 21vw;
 `;
 
 export const NavBtnLink = styled(Link)`
