@@ -23,10 +23,17 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        '&$focused': {
+           
+            filter: 'brightness(1.5)'
+        }
+    },
     card: {
         //display: 'flex',
         height: '100%',
-        width: '100%'
+        width: '100%',
+        background: 'rgba(0, 0, 0, 0.9) !important'
     },
     content: {
         height: '100%'
@@ -54,8 +61,25 @@ const useStyles = makeStyles(theme => ({
         
     },
     chatBox: {
+        background: 'white',
+        width: '85%',
         
-        width: '85%'
+        '& label.Mui-focused': {
+            color: '#541d1d',
+            filter: 'brightness(1.5)',
+            
+            
+          },
+          
+    },
+    chatBorder: {
+        background: 'white',
+        display: 'flex',
+        marginLeft: '3%',
+        width: '87%',
+        alignItems: 'center',
+        padding: '1.5%',
+        borderRadius: '10px',
     },
     nicknameBox: {
         height: '40px !important'
@@ -63,27 +87,35 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         width: '15%',
-        marginLeft: '5px !important'
+        marginLeft: '5px !important',
+        background: 'linear-gradient(to bottom, #303030 0%, #541d1d 80%) !important'
         
     },
     message: {
             
     },
     myMessage: {
-        background: '#33cc33',
-        
+        color: 'white !important',
+        background: 'linear-gradient(to top,  #0f8d21 0%, #17ab1b 30%) !important',
+        boxShadow: '0px 3px 5px black',
         padding: '6px',
+        
         borderRadius: '10px',
         margin: '1px',
-        
+        marginBottom: '1px',
+        textalign: 'justify',
+        minWidth: '10px'
     },
     otherMessage: {
-        
+        color: 'white !important',
+        background: 'linear-gradient(to top, #303030 0%, #702121 30%) !important',
+        boxShadow: '0px 3px 5px black',
         padding: '5px',
         paddingTop: '10px',
         borderRadius: '10px',
         margin: '1px',
-        marginLeft: '5px'
+        marginLeft: '5px',
+        marginBottom: '1px',
         
     },
     messageContainer: {
@@ -93,6 +125,7 @@ const useStyles = makeStyles(theme => ({
         overflowY: 'hidden',
         overflowX: 'hidden',
         background: '#f2f2f2',
+        borderRadius: '10px'
         
     },
     myNickname: {
@@ -106,9 +139,33 @@ const useStyles = makeStyles(theme => ({
         
         alignItems: 'center',
         
+    },
+    TextField: {
+        
     }
 }));
 
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+           
+      '&.Mui-focused fieldset': {
+        borderColor: '#541d1d',
+      },
+    },
+  });
+
+  const MessageTypography = styled(Typography)({
+    wordWrap: 'break-word !important',
+    maxWidth:'25em'
+
+
+  });
 
 
 function Chat({socket, username, room, movieTitle}){
@@ -165,7 +222,7 @@ function Chat({socket, username, room, movieTitle}){
         //<Card sx={{ minWidth: '100%', minHeight: '100%', flex: '2' }}></Card>
         <Card className={classes.card}>
       <CardContent className={classes.content}>
-        <Typography className={classes.chatHeader} variant = "h4" sx={{ fontSize: 22 }} color="text.secondary">
+        <Typography className={classes.chatHeader} variant = "h4" sx={{ fontSize: 22 }} color="white">
           {movieTitle} Chat
         </Typography>
         
@@ -187,7 +244,7 @@ function Chat({socket, username, room, movieTitle}){
                     
                     <div className={username === messageContent.author? classes.myMessage : classes.otherMessage} >
                         
-                        <Typography variant='body1' gutterBottom>{messageContent.message}</Typography>
+                        <MessageTypography variant='body1' gutterBottom>{messageContent.message}</MessageTypography>
                     </div>
                     
                 </div>
@@ -200,7 +257,8 @@ function Chat({socket, username, room, movieTitle}){
         </div>
         
         <div className={classes.flex}>
-            <TextField 
+            <div className={classes.chatBorder}>
+            <CssTextField
             label="Send to chat" 
             variant="outlined"
             className={classes.chatBox}
@@ -220,6 +278,7 @@ function Chat({socket, username, room, movieTitle}){
             >
                 Send
             </Button>
+            </div>
         </div>
         
         

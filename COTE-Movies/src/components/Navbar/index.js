@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <>
     <Nav>
-        <NavLink to="/">
+        <NavLink onClick={"document.querySelector(#reload)"} to="/">
             <img src={require('../../images/LogoSmall.png')} alt=""/>
         </NavLink>
         <Bars />

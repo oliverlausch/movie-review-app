@@ -10,7 +10,10 @@ const socket = io.connect("http://localhost:3001");
 
 const useStyles = makeStyles(theme => ({
   root:{
-    margin: '0px'
+    margin: '0px',
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green !important',
+    },
   } , 
   app:{
       height: '100%',
@@ -26,8 +29,22 @@ const useStyles = makeStyles(theme => ({
       justifyItems: 'center'
     },
     button:{
-      background: 'linear-gradient(to bottom, #000000 0%, #381a1a 102%) !important',
+      background: 'linear-gradient(to bottom, #303030 0%, #541d1d 80%) !important',
       marginTop: '5% !important'
+    },
+    textField:{
+      background: 'white',
+      '& label.Mui-focused': {
+        color: '#541d1d',
+        filter: 'brightness(1.5)'
+        
+        
+      },
+      '& .MuiFilledInput-underline:after': {
+        borderBottomColor: '#541d1d !important',
+        filter: 'brightness(1.5)'
+      }
+      
     }
 }));
 
@@ -81,7 +98,7 @@ const ChatApp = (props) =>{
           <div className={classes.joinChatContainer}>
             <h2>Join The {movieTitle} Chat</h2>
            
-            <TextField 
+            <TextField className= {classes.textField}
             label="Enter Nickname" 
             variant="filled"
             onChange={(event) => {

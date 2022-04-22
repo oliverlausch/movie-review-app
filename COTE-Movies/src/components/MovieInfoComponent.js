@@ -31,6 +31,7 @@ const Trailer = styled.div`
 display: flex;
 justify-content:left;
 width: 100%;
+
 background: rgba(0, 0, 0, 0.9);
 border-top: 1px solid #969696;
 
@@ -38,9 +39,9 @@ border-top: 1px solid #969696;
 
 const ChatContainer = styled.div`
 display: flex;
-padding: 5px 15px;
+
 flex-direction: column;
-background: rgba(0, 0, 0, 0.9);
+color: white;
 width: 100%;
 border-bottom: 1px solid #969696;
 border-left: 1px solid #969696;

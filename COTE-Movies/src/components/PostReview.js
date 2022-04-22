@@ -5,22 +5,23 @@ import styled from 'styled-components';
 
 
 const Button = styled.button`
-  background-color:   black;
+  background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
   color: white;
   font-size: 20px;
   padding: 10px 60px;
   border-radius: 5px;
   margin: 10px 0px;
   cursor: pointer;
+  opacity: 1.0;
 `;
 const PostReviewDiv = styled.div`
-background-color: black;
-opacity: 0.9;
+
 `;
 const Text1 = styled.text`
 color: #ff324d;
 font-size: 32px;
 font-weight: bold;
+
 `;
 const Text2 = styled.text`
 color: white;
