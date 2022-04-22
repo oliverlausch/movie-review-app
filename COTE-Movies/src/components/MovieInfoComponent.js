@@ -13,8 +13,8 @@ display: flex;
 flex-direction: row;
 padding-Top: 20px;
 justify-content: left;
-background: black;
-opacity: 0.9;
+background: rgba(0, 0, 0, 0.9);
+
 `;
 
 const VideoContainer = styled.div`
@@ -24,15 +24,14 @@ flex-direction: column;
 height: 100%;
 width: 100%;
 border-bottom: 1px solid #969696;
-background: black;
-opacity: 0.9;
+
 `;
 
 const Trailer = styled.div`
 display: flex;
 justify-content:left;
 width: 100%;
-background: white;
+background: rgba(0, 0, 0, 0.9);
 border-top: 1px solid #969696;
 
 `;
@@ -41,7 +40,7 @@ const ChatContainer = styled.div`
 display: flex;
 padding: 5px 15px;
 flex-direction: column;
-
+background: rgba(0, 0, 0, 0.9);
 width: 100%;
 border-bottom: 1px solid #969696;
 border-left: 1px solid #969696;
@@ -55,7 +54,10 @@ height: 452px;
 margin-left: 10px;
 align-items: center;
 padding-Top: 20px;
+opacity: 1.0;
 `;
+
+
 
 const InfoColumn = styled.div`
 display: flex;
@@ -102,7 +104,8 @@ const Close = styled.span`
   padding-right: 50px;
   border-radius: 0%;
   cursor: pointer;
-  opacity: 1;
+  
+  
 `;
 
 const Desc = styled.div`
@@ -159,6 +162,7 @@ const MovieInfoComponent = (props) => {
           <>            
             
             <CoverImage src={movieInfo?.image} alt={movieInfo?.title} />
+            
             <InfoColumn>
             <MovieName><span>{movieInfo?.title}</span></MovieName>
               <MovieInfo>Type: <span>{movieInfo?.type}</span></MovieInfo>

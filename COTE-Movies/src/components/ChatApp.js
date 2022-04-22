@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme => ({
       justifyItems: 'center'
     },
     button:{
+      background: 'linear-gradient(to bottom, #000000 0%, #381a1a 102%) !important',
       marginTop: '5% !important'
     }
 }));
@@ -93,7 +94,7 @@ const ChatApp = (props) =>{
             />
             <Button 
                 variant='contained' 
-                color="primary" 
+                
                 className={classes.button}
                 onClick={joinRoom}
                 

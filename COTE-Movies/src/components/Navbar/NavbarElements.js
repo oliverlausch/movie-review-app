@@ -71,7 +71,7 @@ export const Button = styled.nav`
   align-items: center;
   justify-content: flex-end;
   width: 20vw;
-
+  color: white;
   @media screen and (max-width: 768px) {
     display: none;
   }
