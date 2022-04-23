@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(CoteContext))]
-    [Migration("20220403180139_IntialCreate")]
-    partial class IntialCreate
+    [Migration("20220422222851_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,9 +62,62 @@ namespace API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("userId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Models.VM.Login", b =>
+                {
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Logins");
+                });
+
+            modelBuilder.Entity("Models.VM.Register", b =>
+                {
+                    b.Property<int>("userId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateRegistered")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("userId");
+
+                    b.ToTable("Registers");
+                });
+
+            modelBuilder.Entity("Models.VM.Response", b =>
+                {
+                    b.Property<string>("Status")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Status");
+
+                    b.ToTable("Responses");
                 });
 #pragma warning restore 612, 618
         }

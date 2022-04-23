@@ -1,0 +1,23 @@
+https://www.codeproject.com/Articles/5164391/Create-user-Registration-and-Login-using-Web-API-a
+
+Login system
+
+Backend:
+In User controller
+
+-Added new HTTP Post for Add User with Login
+-Added Response, Login and Register classes
+-Added Password string to user class
+-Edited DbInitializer class to include Password strings
+-Edited DbContext to include DbSets for Register, Response and Login.
+-Dropped Database, Removed migrations, Added new InitialCreate Migration,
+Updated database..
+
+Start-UP class:
+Added AllowCredentials for Cors in Application Builder
+Set Origins to All instead of localhost.3000
+
+Front-end:
+Edited SignUp form to have password integration
+Edited GetUsers HTTP Request to have password integration
+Edited UpdateUsers form to have password integration

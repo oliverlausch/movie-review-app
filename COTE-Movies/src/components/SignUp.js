@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     //const [userId, setUser] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     //const [dateRegistered, setDateRegistered] = useState('');
     const navigate = useNavigate();
     var today = new Date();
@@ -65,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
       userId: 0, 
       dateRegistered: today,
       email: "",
-      name: ""
+      name: "",
+      password: ""
   })
 
     function submit(e) {
@@ -76,7 +78,8 @@ const useStyles = makeStyles((theme) => ({
             userId: data.userId,
             dateRegistered: today,
             email: email,
-            name: name
+            name: name,
+            password: password
         }).then(() => {
             navigate("/admin");
         })
@@ -154,21 +157,9 @@ onChange={(e) => setEmail(e.target.value)} />*/}
                           label="Password"
                           type="password"
                           id="password"
+                          onChange={(e) => setPassword(e.target.value)}
                       />
 
-                      {/*
-                      Password:
-                      <input
-                          value={''}
-                          placeholder='Enter password'
-                          onChange={(e) => setEmail(e.target.value)} />
-                      {/*Date Registered:
- <input
-             value={dateRegistered}
-             type={'datetime-local'}
-             placeholder='Registration Date'
-             onChange={(e) => setDateRegistered(e.target.value)}
-/>*/}
                   </ButtonFlex>
                   <Link href="/signin" variant="body2">
                 {"Already have an account? Sign In"}

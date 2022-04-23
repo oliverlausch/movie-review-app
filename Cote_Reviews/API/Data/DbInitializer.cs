@@ -28,6 +28,7 @@ public static class DbInitializer
                 Name = "Jim",
                 DateRegistered = DateTime.Parse("2021/09/27"),
                 Email = "jimbojones@thesimpsons.com",
+                Password = "password",
             },
 
             new User
@@ -36,6 +37,7 @@ public static class DbInitializer
                 Name = "Alieshah",
                 DateRegistered = DateTime.Parse("2022/01/23"),
                 Email = "alieshah789@yahoo.com",
+                Password = "password",
             },
 
             new User
@@ -44,6 +46,7 @@ public static class DbInitializer
                 Name = "Chris",
                 DateRegistered = DateTime.Parse("2022/02/10"),
                 Email = "christophski@mail.com",
+                Password = "password",
             },
 
             new User
@@ -52,6 +55,16 @@ public static class DbInitializer
                 Name = "Zachary",
                 DateRegistered = DateTime.Parse("2022/03/04"),
                 Email = "zachafree@gmail.com",
+                Password = "password",
+            },
+
+            new User
+            {
+                userId = 5,
+                Name = "Anum",
+                DateRegistered = DateTime.Parse("2022/02/07"),
+                Email = "anumi37@mail.com",
+                Password = "password",
             },
         };
 

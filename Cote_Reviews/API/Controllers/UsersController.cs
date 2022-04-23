@@ -6,6 +6,7 @@ using API.Data;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Models.VM;
 
 namespace API.Controllers
 {
@@ -41,7 +42,7 @@ namespace API.Controllers
 
         // Add a new User
 
-        [HttpPost]
+       /* [HttpPost]
         public async Task<ActionResult<User>> AddUser(User user)
         {
             _context.Users.Add(user);
@@ -51,6 +52,58 @@ namespace API.Controllers
             if (result) return CreatedAtRoute("GetUser", new {id = user.userId}, user);
 
             return BadRequest(new ProblemDetails { Title = "Problem with adding a new User" });
+        }
+
+        */
+
+        // Add a new User (With Login system)
+
+        [HttpPost]
+        public async Task<ActionResult<User>> AddUser(Register Reg)
+        {
+            //try
+            //{
+                User user = new User();
+                if (user.userId == 0)
+                {
+                    user.Name = Reg.Name;
+                    user.DateRegistered = Reg.DateRegistered;
+                    user.Email = Reg.Email;
+                    user.Password = Reg.Password;
+                }
+                     _context.Users.Add(user);
+
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if (result) return CreatedAtRoute("GetUser", new {id = user.userId}, user);
+                
+            //}
+            //catch (Exception)
+            //{
+                return BadRequest(new ProblemDetails { Title = "Problem with adding a new User" });
+            //}
+        }
+
+        // Login a User
+
+        [Route("Login")]
+        [HttpPost]
+        public Response UserLogin(Login login)
+        {
+            var log = _context.Users.Where(x => x.Email.Equals(login.Email) && 
+                      x.Password.Equals(login.Password)).FirstOrDefault();
+
+            if (log == null)
+            {
+                Console.WriteLine("Login failed: Invalid User");
+                return new Response { Status = "Invalid", Message = "Invalid User." };
+            }
+            else
+                return new Response
+                {
+                    Status = "Success",
+                    Message = "Login Successfully"
+                };
         }
 
         // Delete a User

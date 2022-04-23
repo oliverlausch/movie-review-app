@@ -46,6 +46,7 @@ padding-bottom: 17px;
     const [userId, setUser] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     //const [dateRegistered, setDateRegistered] = useState('');
     const navigate = useNavigate();
 
@@ -59,7 +60,8 @@ padding-bottom: 17px;
             userId: userId,
             //dateRegistered: dateRegistered,
             email: email,
-            name: name
+            name: name,
+            password: password
         }).then(() => {
             navigate("/admin");
         })
@@ -70,7 +72,7 @@ padding-bottom: 17px;
         setUser(localStorage.getItem('UserID'));
         setName(localStorage.getItem('Name'));
         setEmail(localStorage.getItem('Email'));
-        
+        setPassword(localStorage.getItem('Password'));
         //setDateRegistered(localStorage.getItem('RegDate'));
     }, [])
 
@@ -95,6 +97,12 @@ padding-bottom: 17px;
                         value={email}
                         placeholder='Email'
                         onChange={(e) => setEmail(e.target.value)}
+                    />
+                Password:
+            <input
+                        value={password}
+                        placeholder='Password'
+                        onChange={(e) => setPassword(e.target.value)}
                     />
             </ButtonFlex>
                 <Button>Update</Button><Button><Link to="/admin">Return to Dashboard</Link></Button>

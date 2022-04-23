@@ -64,7 +64,7 @@ function GetReviews() {
   return (
     <div>
     <Button onClick={getReviews}> Show Reviews </Button>
-    <Button> Hide Reviews </Button>
+    {/*<Button> Hide Reviews </Button>*/}
    
     {review.map(review => (
       <ul key={review.id}>

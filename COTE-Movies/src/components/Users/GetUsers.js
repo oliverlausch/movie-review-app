@@ -40,10 +40,11 @@ function GetUsers() {
 // setData is review.id, post and rating. Store in memory using
 // local storage for use later in Update.
 
-  const setData = (userId, name, email) => {
+  const setData = (userId, name, email, password) => {
     localStorage.setItem('UserID', userId)
     localStorage.setItem('Name', name)
     localStorage.setItem('Email', email)
+    localStorage.setItem('Password', password)
     //localStorage.setItem('RegDate', dateRegistered)
   }
 
@@ -60,7 +61,7 @@ function GetUsers() {
   return (
     <div>
     <Button onClick={GetUsers}> Show User List </Button>
-    <Button> Hide Users </Button>
+    {/*<Button> Hide Users </Button>*/}
    
     {user.map(user => (
       <ul key={user.userId}>
@@ -68,9 +69,10 @@ function GetUsers() {
         <li className='List'><b>User ID:</b> {user.userId}</li>
         <li className='List'><b>Name:</b> {user.name}</li>
         <li className='List'><b>Email:</b> {user.email}</li>
+        <li className='List'><b>Password:</b> {user.password}</li>
         <li className='List'><b>Date registered:</b> {user.dateRegistered}</li>
         <br/>
-        <Update onClick={() => setData(user.userId, user.name, user.email)}><Link to="/update-user">Update</Link></Update>
+        <Update onClick={() => setData(user.userId, user.name, user.email, user.password)}><Link to="/update-user">Update</Link></Update>
         <Delete onClick={() => setData(user.userId)}><Link to="/delete-user">Remove</Link></Delete>
         </ul>
     ))}
