@@ -5,15 +5,13 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Typography from '@mui/material/Typography';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -53,26 +51,31 @@ const setData = (email, password) => {
   localStorage.setItem('Password', password)
 }
 
-function submit (e) {
-    // Prevent the form from refreshing the page upon submission,
-    // And send the form instead, to our API via POST method!
-    e.preventDefault();
-    axios.post(url, {
-        email: email,
-        password: password
-    }).then((response) =>
-    setJSONResponse(response.data.status)).then(() => {
-      if (JSONResponse === "Success" ){
+    useEffect( () => {
 
-        setData(email, password)
-        navigate("/getuser");
+        if (JSONResponse === "Success" & email === 'admin@mail.com' & password === 'admin') {
+          setData(email, password)
+          navigate("/admin");
+        }
+        else if (JSONResponse === "Success" )
+        {
+          setData(email, password)
+          navigate("/getuser");
+        }
+        
+      })
+      
+      const submit = async (e) => {
+
+        e.preventDefault();
+
+      axios.post(url, {
+          email: email,
+          password: password
+      }).then((response) =>
+      setJSONResponse(response.data.status))
+        
     }
-    else if (JSONResponse === "Invalid" ){
-
-    alert("Login error: Invalid credentials, please try again.");
-  }
-    })
-  }
 
   return(
     <><Navbar /><Container component="main" maxWidth="xs">
@@ -105,9 +108,6 @@ function submit (e) {
             id="password"
             autoComplete="current-password" 
             onChange={(e) => setPassword(e.target.value)}/>
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me" />
           <Button onClick={submit}
             type="submit"
             fullWidth
@@ -119,9 +119,6 @@ function submit (e) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
             </Grid>
             <Grid item>
               <Link href="/signup" variant="body2">

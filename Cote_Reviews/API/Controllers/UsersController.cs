@@ -99,10 +99,12 @@ namespace API.Controllers
                 return new Response { Status = "Invalid", Message = "Invalid User." };
             }
             else
-                return new Response
-                {
-                    Status = "Success",
-                    Message = "Login Successfully"
+            {   
+                    return new Response
+                    {
+                        Status = "Success",
+                        Message = "Login Successfully"
+                    };
                 };
         }
 
