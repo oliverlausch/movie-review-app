@@ -138,7 +138,10 @@ const MovieInfoComponent = (props) => {
         // Get Request
       await axios.get(`https://imdb-api.com/en/API/Title/${API_KEY}/${selectedMovie}`,).then((response) =>
       setMovieInfo(response.data));
-      
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
       }; fetchMovieInfo() }, [selectedMovie]);
 
       useEffect(() => {

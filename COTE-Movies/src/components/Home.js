@@ -11,7 +11,7 @@ import './Home.css';
 const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
 const API_KEY_COUNT = 0
 //export const API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
-export const API_KEY = API_KEY_ARRAY[0];
+export const API_KEY = API_KEY_ARRAY[1];
 
 var first_count = true;
 //var search_header = "";
@@ -127,7 +127,9 @@ function Home() {
     clearTimeout(timeoutId);
     updateSearchQuery(event.target.value);
     const timeout = setTimeout(() => fetchData(event.target.value), 500);
+    onMovieSelect();
     updateTimeoutId(timeout);
+    
   };
   const onTextLoad = (event) => {
     if (first_count) {
