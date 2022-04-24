@@ -10,13 +10,27 @@ const Container = styled.div`
 display: flex;
 flex-direction: row;
 padding: 20px;
-justify-content: even;
+justify-content: flex-start;
 border-bottom: 1px solid #969696;
+`;
+
+const Container1 = styled.div`
+display: flex;
+flex-direction: column;
+width: 25%;
+`;
+
+const Container2 = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+width: 100%;
 `;
 
 const useStyles = makeStyles(theme => ({
     Admin:{
-        marginTop: "-19px !important"
+        marginTop: "-22px !important",
+        marginBottom: "10px"
     }
   }));
 
@@ -30,8 +44,12 @@ function Admin() {
         <h1>Welcome to the Admin Dashboard</h1>
         
         <Container>
-            <GetUsers />
-            <GetReviews /> 
+        <Container1>
+        <GetUsers />
+        </Container1>
+        <Container2>
+        <GetReviews />
+        </Container2>
         </Container>
        
         

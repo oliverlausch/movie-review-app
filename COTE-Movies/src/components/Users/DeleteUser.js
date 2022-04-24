@@ -44,7 +44,7 @@ function DeleteUser() {
         axios.delete(url, {
             userId: id
         }).then(() => {
-            navigate("/admin");
+            navigate("/");
         })
 
     }

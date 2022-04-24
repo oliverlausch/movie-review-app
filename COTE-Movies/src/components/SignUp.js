@@ -62,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
     const url = "http://localhost:5000/api/Users"
 
+    // eslint-disable-next-line no-unused-vars
     const [data, setData] = useState({
       userId: 0, 
       dateRegistered: today,
@@ -81,16 +82,16 @@ const useStyles = makeStyles((theme) => ({
             name: name,
             password: password
         }).then(() => {
-            navigate("/admin");
+            navigate("/signin");
         })
     }
 
-    function handle(e) {
+    /*function handle(e) {
       const newData={...data}
       newData[e.target.id] = e.target.value
       setData(newData)
       console.log(newData)
-  }
+  }*/
   const classes = useStyles();
 
 
@@ -126,7 +127,7 @@ onChange={(e) => setEmail(e.target.value)} />*/}
                       required
                       fullWidth
                       id="name"
-                      label="Name"
+                      label="Name / Nickname"
                       name="name"
                       autoFocus
                       onChange={(e) => setName(e.target.value)}

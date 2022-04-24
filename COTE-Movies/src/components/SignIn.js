@@ -12,6 +12,9 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios';
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,18 +38,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
-  const classes = useStyles();
-  return <>
-    <Navbar />
+      function SignIn() {
+const classes = useStyles();
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const navigate = useNavigate();
+const [JSONResponse, setJSONResponse] = useState('');
 
-    <Container component="main" maxWidth="xs">
+
+const url = "http://localhost:5000/api/Users/Login"
+
+const setData = (email, password) => {
+  localStorage.setItem('Email', email)
+  localStorage.setItem('Password', password)
+}
+
+function submit (e) {
+    // Prevent the form from refreshing the page upon submission,
+    // And send the form instead, to our API via POST method!
+    e.preventDefault();
+    axios.post(url, {
+        email: email,
+        password: password
+    }).then((response) =>
+    setJSONResponse(response.data.status)).then(() => {
+      if (JSONResponse === "Success" ){
+
+        setData(email, password)
+        navigate("/getuser");
+    }
+    else if (JSONResponse === "Invalid" ){
+
+    alert("Login error: Invalid credentials, please try again.");
+  }
+    })
+  }
+
+  return(
+    <><Navbar /><Container component="main" maxWidth="xs">
       <div className={classes.paper}>
         <Avatar className={classes.avatar}></Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={(e) => submit(e)}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -56,8 +91,9 @@ export default function SignIn() {
             label="Email Address"
             name="email"
             autoComplete="email"
+            onChange={(e) => setEmail(e.target.value)}
             autoFocus
-          />
+             />
           <TextField
             variant="outlined"
             margin="normal"
@@ -67,13 +103,12 @@ export default function SignIn() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
-          />
+            autoComplete="current-password" 
+            onChange={(e) => setPassword(e.target.value)}/>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
+            label="Remember me" />
+          <Button onClick={submit}
             type="submit"
             fullWidth
             variant="contained"
@@ -98,10 +133,8 @@ export default function SignIn() {
       </div>
       <Box mt={8}>
       </Box>
-    </Container>
-    <Footer />
+    </Container><Footer /></>
+  )
+      }
 
-  );
-
-  </>
-}
+export default SignIn;

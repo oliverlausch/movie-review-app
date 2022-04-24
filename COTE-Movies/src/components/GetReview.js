@@ -33,24 +33,25 @@ background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
 `;
 
 const Delete = styled.button`
-  background-color: silver;
-  color: white;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 10px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 const Update = styled.button`
-  background-color: silver;
-  color: white;
-  decoration: none;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 const Container = styled.div`
@@ -61,6 +62,7 @@ background: black;
 opacity: 0.9;
 color: #fff;
 list-style-type: none;
+border-style: outset;
 `;
 
 function GetReview() {
