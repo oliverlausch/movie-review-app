@@ -30,7 +30,8 @@ width: 100%;
 const useStyles = makeStyles(theme => ({
     Admin:{
         marginTop: "-22px !important",
-        marginBottom: "10px"
+        marginBottom: "10px",
+        marginLeft: "20px"
     }
   }));
 
@@ -39,6 +40,11 @@ function Admin() {
     return (
         <>
         <Navbar />
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         
         <div className={classes.Admin}>
         <h1>Welcome to the Admin Dashboard</h1>

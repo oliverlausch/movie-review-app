@@ -126,6 +126,12 @@ const MovieInfoComponent = (props) => {
     const [movieInfo, setMovieInfo] = useState();
 
     const [trailerInfo, setTrailerInfo] = useState();
+
+    // eslint-disable-next-line no-unused-vars
+    const setData = (videoId) => {
+      localStorage.setItem('VideoID', selectedMovie)
+    }
+
     
     // As selectedMovie is receiving the ImdbID, it needs to be a prop.
     //
@@ -151,6 +157,7 @@ const MovieInfoComponent = (props) => {
           // Get Request
         await axios.get(`https://imdb-api.com/en/API/YouTubeTrailer/${API_KEY}/${selectedMovie}`,).then((response) =>
         setTrailerInfo(response.data.videoId));
+        setData()
         
         }; fetchTrailerInfo()}, );
 

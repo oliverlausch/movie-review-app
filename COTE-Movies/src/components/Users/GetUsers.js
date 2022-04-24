@@ -5,33 +5,36 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 const Button = styled.button`
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 const Delete = styled.button`
-  background-color: #1b36ef;
-  color: white;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 const Update = styled.button`
-  background-color: #33ca5f;
-  color: black;
-  font-size: 20px;
-  padding: 10px 60px;
-  border-radius: 5px;
-  margin: 10px 0px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 function GetUsers() {

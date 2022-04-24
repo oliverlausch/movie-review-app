@@ -23,14 +23,14 @@ align-items: left;
 //`;
 
 const Button = styled.button`
-  background-color:  #1b36ef;
-  color: #fff;
-  font-size: 20px;
-  padding: 8px 10px;
-  border-radius: 25px;
-  width: 20%;
-  margin: 10px 0px;
-  cursor: pointer;
+background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
+color: white;
+font-size: 20px;
+padding: 10px 60px;
+border-radius: 5px;
+margin: 10px 0px;
+cursor: pointer;
+opacity: 1.0;
 `;
 
 const ButtonFlex = styled.div`
