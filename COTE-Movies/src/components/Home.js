@@ -30,7 +30,7 @@ padding-top: 115px;
 padding-bottom: 15px;
 border-bottom: 10px;
 
-rgba(0, 0, 0, 0.9);
+background: rgba(0, 0, 0, 0.9);
 // url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
 align-items: center;
 z-index: 1000;
