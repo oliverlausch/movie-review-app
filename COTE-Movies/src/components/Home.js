@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import './Home.css';
 
+
 // API keys
 const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
 const API_KEY_COUNT = 0
@@ -67,6 +68,13 @@ justify-content: space-evenly;
 gap: 24px;
 background-color: inherit;
 
+`;
+
+const H1Text = styled.text`
+color: #f08080;
+font-size: 70px;
+font-style: italic;
+background: black;
 `;
 
 //const SearchHeader = styled.div`
@@ -183,7 +191,7 @@ function Home() {
                     movie={movie}
                     onMovieSelect={onMovieSelect}
                 />))
-            : <h1>No search results were generated, please enter a new search.</h1>}
+            : <H1Text>No search results were generated, please enter a new search.</H1Text>}
 
     </MovieListContainer>
     <Footer />
