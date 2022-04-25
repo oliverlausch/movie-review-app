@@ -13,6 +13,7 @@ import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './ProtectedRoutes';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,7 +54,8 @@ const setData = (email, password) => {
 
     useEffect( () => {
 
-        if (JSONResponse === "Success" & email === 'admin@mail.com' & password === 'admin') {
+        if (JSONResponse === "Success" & email === 'admin@mail.com' & password === 'admin')
+        {
           setData(email, password)
           navigate("/admin");
         }
@@ -68,7 +70,7 @@ const setData = (email, password) => {
       const submit = async (e) => {
 
         e.preventDefault();
-
+        
       axios.post(url, {
           email: email,
           password: password

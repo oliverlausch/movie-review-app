@@ -1,7 +1,7 @@
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import { BrowserRouter as Router } from "react-router-dom";
-import styled from 'styled-components'
-import { makeStyles } from '@material-ui/core/Styles';
+//import styled from 'styled-components'
+//import { makeStyles } from '@material-ui/core/Styles';
 import Home from "./components/Home"
 import SignIn from "./components/SignIn"
 import SignUp from "./components/SignUp"
@@ -12,9 +12,9 @@ import UpdateUser from "./components/Users/UpdateUser"
 import UpdateUserProfile from "./components/Users/UpdateUserProfile";
 import DeleteUser from "./components/Users/DeleteUser"
 import GetUser from "./components/Users/GetUser"
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
-
-const useStyles = makeStyles(theme => ({
+/*const useStyles = makeStyles(theme => ({
   button:{
     backgroundColor: "inherit",
     color: "white",
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     Link: {
       textDecoration: "none",
     }
-}));
+}));*/
 
 
 function App() {
@@ -43,16 +43,22 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-        <Route path="/" element={ <Home/> } />
+
+          {/* Public Routes */}
+          <Route path="/" element={ <Home/> } />
           <Route path="/signin" element={ <SignIn/> } />
           <Route path="/signup" element={ <SignUp/> } />
-          <Route path="/admin" element={ <Admin/> } />
-          <Route path="/getuser" element={ <GetUser/> } />
-          <Route path="/update" element={ <Update/> } />
-          <Route path="/delete" element={ <Delete/> } />
-          <Route path="/update-user" element={ <UpdateUser/> } />
-          <Route path="/update-user-profile" element={ <UpdateUserProfile/> } />
-        <Route path="/delete-user" element={ <DeleteUser/> } />
+
+          {/* Protected Routes */}
+          <Route element={ <ProtectedRoutes /> }>
+            <Route path="/admin" element={ <Admin/> } />
+            <Route path="/getuser" element={ <GetUser/> } />
+            <Route path="/update" element={ <Update/> } />
+            <Route path="/delete" element={ <Delete/> } />
+            <Route path="/update-user" element={ <UpdateUser/> } />
+            <Route path="/update-user-profile" element={ <UpdateUserProfile/> } />
+            <Route path="/delete-user" element={ <DeleteUser/> } />
+          </Route>
 
         </Routes>
       </Router>

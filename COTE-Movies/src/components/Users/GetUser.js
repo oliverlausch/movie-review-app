@@ -80,7 +80,7 @@ function GetUser() {
         setAccount(localStorage.getItem('Email'));
     }, )
     
-    const UserProfile = user.filter(user => user.email === account)
+    const UserProfile = user.filter(user => user.email === account);
   
 
   return (
@@ -95,6 +95,7 @@ function GetUser() {
           </Title>
           <br/>
               <Button onClick={GetUsers}> My Profile </Button>
+              <Button><Link to="/">Go Back</Link></Button>
               {UserProfile.map(user => (
                   <ul key={user.userId}>
                       <br />
