@@ -63,24 +63,42 @@ border-bottom: 1px solid #969696;
 function GetUser() {
     const [account, setAccount] = useState('');
     const [user, setUser] = useState([]);
+    const UserProfile = user.filter(user => user.email === account);
     const setData = (userId, name, email, password) => {
         localStorage.setItem('UserID', userId)
         localStorage.setItem('Name', name)
         localStorage.setItem('Email', email)
         localStorage.setItem('Password', password)
       }
-
-      async function GetUsers() {
-        await Axios.get("http://localhost:5000/api/Users").then(
-          (response) => setUser(response.data));
-      }
+    
+    const setUserLocal = (userId) => {
+      
+      localStorage.setItem('UserID', userId)
+    }
+      
       
       // eslint-disable-next-line react-hooks/exhaustive-deps
       useEffect(() => {
+         
+        
+        
+        async function GetUsers() {
+          await Axios.get("http://localhost:5000/api/Users").then(
+            (response) => {setUser(response.data);  setUserLocal(UserProfile[0].userId); });
+            console.log("yo")
+        }
+        GetUsers()
         setAccount(localStorage.getItem('Email'));
-    }, )
+        
+        
+        
+    }, [UserProfile] )
+
     
-    const UserProfile = user.filter(user => user.email === account);
+    
+    
+    
+    
   
 
   return (
@@ -94,7 +112,7 @@ function GetUser() {
           <h2>Welcome to the User Profile portal</h2>
           </Title>
           <br/>
-              <Button onClick={GetUsers}> My Profile </Button>
+              {/* <Button onClick={GetUsers}> My Profile </Button> */}
               <Button><Link to="/">Go Back</Link></Button>
               {UserProfile.map(user => (
                   <ul key={user.userId}>

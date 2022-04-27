@@ -12,7 +12,7 @@ import './Home.css';
 const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
 const API_KEY_COUNT = 0
 //export const API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
-export const API_KEY = API_KEY_ARRAY[2];
+export const API_KEY = API_KEY_ARRAY[0];
 
 var first_count = true;
 //var search_header = "";
@@ -31,7 +31,7 @@ padding-top: 115px;
 padding-bottom: 15px;
 border-bottom: 10px;
 
-background: linear-gradient(to bottom, #381a1a 102%, #000000 0%);
+background: rgba(0, 0, 0, 0.9);
 // url(https://cdn.wallpapersafari.com/24/74/zgeTuV.jpg) no-repeat center center fixed;
 align-items: center;
 z-index: 1000;
@@ -51,7 +51,7 @@ font-weight: bolder;
 width: 100%;
 justify-content: space-evenly;
 display: flex;
-background-color: inherit;
+background: rgba(0, 0, 0, 0.1);
 border: none;
 outline: none;
 margin-left: 12px;
@@ -141,9 +141,11 @@ function Home() {
   };
   const onTextLoad = (event) => {
     if (first_count) {
+        
         onTextChange(event)
         first_count = false;
     }
+    
 };
   
 
