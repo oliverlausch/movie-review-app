@@ -4,18 +4,24 @@ import {Nav, NavLink, NavMenu, NavBtn, NavBtnLink, Bars, Button} from './NavbarE
 
 const Navbar = () => {
 
+    var profDirVar;
+    var loginVar;
+    var signInOutText;
+
     const signoutFunc = () => {
         if (localStorage.getItem('Email') != null){
         localStorage.clear();}
     }
 
-    const signInOutText = () => {
-        if (localStorage.getItem('Email') != null){
-            return "Sign Out"
-        }
-        else {
-            return "Sign In"
-        } 
+    if (localStorage.getItem('Email') != null){
+        profDirVar = "/getuser";
+        loginVar = "/";
+        signInOutText = "Sign Out"
+    }
+    else{
+        profDirVar = "/signin";
+        loginVar = "/signin"
+        signInOutText = "Sign In"
     }
 
   return (
@@ -32,10 +38,13 @@ const Navbar = () => {
             </NavLink></Button>
         </NavMenu>
         <NavBtn>
-            <NavBtnLink onClick={signoutFunc} to="/signin">{signInOutText}</NavBtnLink>
+            <NavBtnLink to={profDirVar}>My Profile</NavBtnLink>
         </NavBtn>
         <NavBtn>
-            <NavBtnLink to="/signup">Sign Up</NavBtnLink>
+            <NavBtnLink onClick={signoutFunc} to={loginVar}>{signInOutText}</NavBtnLink>
+        </NavBtn>
+        <NavBtn>
+            <NavBtnLink to={loginVar}>Sign Up</NavBtnLink>
         </NavBtn>
 
     </Nav>
