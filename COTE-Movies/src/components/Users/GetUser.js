@@ -5,6 +5,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import Navbar from '../Navbar'
 import Footer from '../Footer'
+import GetUserReviews from '../GetUserReviews';
+import GetReviews from '../GetReviews';
 
 const Container = styled.div`
 width: 100%;
@@ -85,7 +87,6 @@ function GetUser() {
         async function GetUsers() {
           await Axios.get("http://localhost:5000/api/Users").then(
             (response) => {setUser(response.data);  setUserLocal(UserProfile[0].userId); });
-            console.log("yo")
         }
         GetUsers()
         setAccount(localStorage.getItem('Email'));
@@ -127,6 +128,7 @@ function GetUser() {
                       <Delete onClick={() => setData(user.userId)}><Link to="/delete-user">Delete Account</Link></Delete>
                   </ul>
               ))}
+              <GetUserReviews />
           </Container>
       </div></>
       <br />

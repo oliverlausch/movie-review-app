@@ -49,17 +49,18 @@ font-style: italic;
         // Prevent the form from refreshing the page upon submission,
         // And send the form instead, to our API via POST method!
         e.preventDefault();
-        axios.post(url, {
-            id: data.id,
-            userId: data.userId,
-            videoId: videoId,
-            date: data.date,
-            rating: data.rating,
-            post: data.post
-        }).then(response => {
-            console.log(response.data)
+        if (localStorage.getItem('Email')!=null){
+            axios.post(url, {
+                id: data.id,
+                userId: localStorage.getItem('UserID'),
+                videoId: videoId,
+                date: data.date,
+                rating: data.rating,
+                post: data.post
+            }).then(response => {
+                console.log(response.data)
         })
-
+        }
     }
  // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
@@ -78,12 +79,6 @@ font-style: italic;
 
         
             <form onSubmit={(e) => submit(e)}>
-                <input onChange={(e) => handle(e)} id = "userId" value={data.userId} placeholder="User ID" type="number"></input>
-                <br/>
-                {/*<input onChange={(e) => handle(e)} id = "videoId" value={videoId} placeholder="IMDB Video id" type="string"></input>
-                <br/>*/}
-                {/*<input onChange={(e) => handle(e)} id = "date" value={data.date} placeholder="date" type="date"></input>
-                <br/>*/}
             <Text2>Select Movie Rating: </Text2><select input
                         value={data.rating}
                         placeholder='Movie rating'

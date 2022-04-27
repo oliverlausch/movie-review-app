@@ -65,15 +65,13 @@ list-style-type: none;
 border-style: outset;
 `;
 
-function GetReview() {
+function GetUserReviews() {
 
   const [vid, setVID] = useState('');
 
 // Define setData
 // setData is review.id, post and rating. Store in memory using
 // local storage for use later in Update.
-
-
 
   const setData = (id, rating, post, date, videoId, userId) => {
     localStorage.setItem('ID', id)
@@ -86,14 +84,6 @@ function GetReview() {
 
  // Define a state used to store the Review once called
   const [review, setReview] = useState([]);
-  //const [videoReview, setVideoReview] = useState('');
-
-  /*useEffect(() => {
-    setVideoReview(localStorage.getItem('VideoID'));
-    console.log(setVideoReview + "This is it")
-}, [])*/
-
-  // Call API methods with axios
 
   async function getReviews() {
     await Axios.get("http://localhost:5000/api/Reviews").then(
@@ -102,20 +92,15 @@ function GetReview() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setVID(localStorage.getItem('VideoID'));
-}, )
+    setVID(localStorage.getItem('UserID'));
+},[])
 
-const VidReview = review.filter(review => review.videoId === vid)
+const VidReview = review.filter(review => review.userId == vid)
+console.log(VidReview);
 
   return (
     <div>
     <Button onClick={getReviews}> Show Reviews </Button>
-   
-    {/*let GetReview = reviews.filter(function (review) {
-        return review.videoId === {videoId};
-    }).map(function (review) {
-        return review.post;
-    })*/}
 
     {VidReview.map(review => (
       <ul key={review}>
@@ -126,6 +111,8 @@ const VidReview = review.filter(review => review.videoId === vid)
         <li className='List'><b>Date:</b> {review.date}</li>
         <li className='List'><b>User ID:</b> {review.userId}</li>
         <br/>
+        <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)}><Link to="/update">Update</Link></Update>
+        <Delete onClick={() => setData(review.id)}><Link to="/delete">Remove</Link></Delete>
         </Container>
         </ul>
     ))}
@@ -133,4 +120,4 @@ const VidReview = review.filter(review => review.videoId === vid)
   )
 }
 
-export default GetReview;
+export default GetUserReviews;

@@ -10,9 +10,7 @@ import './Home.css';
 
 // API keys
 const API_KEY_ARRAY = ["k_4gvizmjv", "k_6npoyq2n", "k_9uxy48gg", "k_d5nc6sfs", "k_atxl86be", "k_e1mhcbum", "k_2xigzzuc", "k_3dmz78gz"]
-const API_KEY_COUNT = 0
-//export const API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
-export const API_KEY = API_KEY_ARRAY[0];
+export const API_KEY = API_KEY_ARRAY[2];
 
 var first_count = true;
 //var search_header = "";
@@ -87,21 +85,13 @@ function Home() {
   const [timeoutId, updateTimeoutId] = useState();
   const [movieList, updateMovieList] = useState([]);
   const [selectedMovie, onMovieSelect] = useState();
-  
-  
-  const changeKey = () => {
-    API_KEY_COUNT++
-    if (API_KEY_COUNT == API_KEY_ARRAY.length){ API_KEY_COUNT = 0 }
-    API_KEY = API_KEY_ARRAY[API_KEY_COUNT];
-  }
-
 
   // API call
   const fetchData = async (searchString) => {
     // eslint-disable-next-line eqeqeq
     if (searchString == null || searchString == "") {
       const response = await axios.get(
-          `https://imdb-api.com/en/API/MostPopularMovies/${API_KEY}`
+          `https://imdb-api.com/en/API/Top250Movies/${API_KEY}`
       )
       
       //search_header = "Showing Results For: Most Popular Movies";

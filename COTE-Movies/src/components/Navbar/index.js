@@ -1,5 +1,4 @@
 import React from 'react'
-import changeKey from '../Home';
 import {Nav, NavLink, NavMenu, NavBtn, NavBtnLink, Bars, Button} from './NavbarElements'
 
 const Navbar = () => {
@@ -10,7 +9,8 @@ const Navbar = () => {
 
     const signoutFunc = () => {
         if (localStorage.getItem('Email') != null){
-        localStorage.clear();}
+        localStorage.clear();
+        this.setState({});}
     }
 
     if (localStorage.getItem('Email') != null){
@@ -32,7 +32,6 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-        <Button onClick={changeKey}><NavLink to= "/">API Key</NavLink></Button>
         <Button onClick={"document.querySelector(#reload)"}><NavLink to="/#" activeStyle>
                 Home
             </NavLink></Button>
@@ -44,7 +43,7 @@ const Navbar = () => {
             <NavBtnLink onClick={signoutFunc} to={loginVar}>{signInOutText}</NavBtnLink>
         </NavBtn>
         <NavBtn>
-            <NavBtnLink to={loginVar}>Sign Up</NavBtnLink>
+            <NavBtnLink to="/signup">Sign Up</NavBtnLink>
         </NavBtn>
 
     </Nav>
