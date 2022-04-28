@@ -39,8 +39,10 @@ font-size: 20px;
 padding: 10px 60px;
 border-radius: 5px;
 margin: 10px 0px;
+margin-left: 10px;
 cursor: pointer;
 opacity: 1.0;
+
 `;
 
 const Update = styled.button`
@@ -50,6 +52,7 @@ font-size: 20px;
 padding: 10px 60px;
 border-radius: 5px;
 margin: 10px 0px;
+margin-left: 10px;
 cursor: pointer;
 opacity: 1.0;
 `;
@@ -114,7 +117,7 @@ function GetUser() {
           </Title>
           <br/>
               {/* <Button onClick={GetUsers}> My Profile </Button> */}
-              <Button><Link to="/">Go Back</Link></Button>
+              <Button><Link to="/" style={{ textDecoration: 'none', color: 'white' }}>Go Back</Link></Button>
               {UserProfile.map(user => (
                   <ul key={user.userId}>
                       <br />
@@ -124,10 +127,11 @@ function GetUser() {
                       <li className='List'><b>Password:</b> {user.password}</li>
                       <li className='List'><b>Date registered:</b> {user.dateRegistered}</li>
                       <br />
-                      <Update onClick={() => setData(user.userId, user.name, user.email, user.password)}><Link to="/update-user-profile">Edit Profile</Link></Update>
-                      <Delete onClick={() => setData(user.userId)}><Link to="/delete-user">Delete Account</Link></Delete>
+                      
                   </ul>
               ))}
+              <Update onClick={() => setData(user.userId, user.name, user.email, user.password)}><Link to="/update-user-profile" style={{ textDecoration: 'none', color: 'white' }}>Edit Profile</Link></Update>
+              <Delete onClick={() => setData(user.userId)}><Link to="/delete-user" style={{ textDecoration: 'none', color: 'white' }}>Delete Account</Link></Delete>
               <GetUserReviews />
           </Container>
       </div></>

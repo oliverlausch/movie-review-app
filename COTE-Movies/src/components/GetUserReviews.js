@@ -30,6 +30,7 @@ background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
   padding: 10px 60px;
   border-radius: 5px;
   margin: 10px 10px;
+  margin-left: 10px;
 `;
 
 const Delete = styled.button`
@@ -40,7 +41,9 @@ padding: 10px 60px;
 border-radius: 5px;
 margin: 10px 0px;
 cursor: pointer;
+text-decoration: none;
 opacity: 1.0;
+margin-left: 10px;
 `;
 
 const Update = styled.button`
@@ -51,19 +54,30 @@ padding: 10px 60px;
 border-radius: 5px;
 margin: 10px 0px;
 cursor: pointer;
+text-decoration: none;
 opacity: 1.0;
+margin-left: 10px;
 `;
 
 const Container = styled.div`
-width: 100%;
+width: 95%;
 height: 100%;
+padding: 5px;
 align-items: left;
-background: black;
+border-color:#541d1d;
 opacity: 0.9;
-color: #fff;
+color: black;
 list-style-type: none;
 border-style: outset;
 `;
+
+const List = styled.div`
+padding-left: 10px;
+padding-top: 5px;
+
+`;
+
+
 
 function GetUserReviews() {
 
@@ -106,15 +120,17 @@ console.log(VidReview);
       <ul key={review}>
         <br/>
         <Container>
-        <li className='List'><b>Rating:</b> {review.rating}</li>
-        <li className='List'><b>Post:</b> {review.post}</li>
-        <li className='List'><b>Date:</b> {review.date}</li>
-        <li className='List'><b>User ID:</b> {review.userId}</li>
-        <br/>
-        <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)}><Link to="/update">Update</Link></Update>
-        <Delete onClick={() => setData(review.id)}><Link to="/delete">Remove</Link></Delete>
+          <List>
+          <li className='List'><b>Rating:</b> {review.rating}</li>
+          <li className='List'><b>Post:</b> {review.post}</li>
+          <li className='List'><b>Date:</b> {review.date}</li>
+          <li className='List'><b>User ID:</b> {review.userId}</li>
+          <br/>
+          </List>
+        <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)} ><Link to="/update" style={{ textDecoration: 'none', color: 'white' }}>Update</Link></Update>
+        <Delete onClick={() => setData(review.id)}><Link to="/delete" style={{ textDecoration: 'none', color: 'white' }}>Remove</Link></Delete>
         </Container>
-        </ul>
+      </ul>
     ))}
     </div>
   )
