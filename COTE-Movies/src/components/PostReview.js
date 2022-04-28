@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import '../components/PostReview.css';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 
 const Button = styled.button`
   background:   linear-gradient(to bottom, #303030 0%, #541d1d 80%);
@@ -34,7 +34,7 @@ font-style: italic;
     const [videoId, setVideoID] = useState('');
     var today = new Date();
     
-   
+   const navigate = useNavigate();
     
     const [data, setData] = useState({
         id: 0,
@@ -60,6 +60,9 @@ font-style: italic;
             }).then(response => {
                 console.log(response.data)
         })
+        } else {
+            alert("System: You must sign in to post a review.")
+            navigate("/signin")
         }
     }
  // eslint-disable-next-line react-hooks/exhaustive-deps

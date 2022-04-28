@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import GetUsers from './Users/GetUsers';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Container = styled.div`
 display: flex;
@@ -36,6 +38,23 @@ const useStyles = makeStyles(theme => ({
   }));
 
 function Admin() {
+
+const navigate = useNavigate();
+
+    useEffect( () => {
+    if (localStorage.getItem('Email')!='admin@mail.com' && localStorage.getItem('Password') != 'admin'){
+        alert("System: You are not authorised to view this page.")
+            navigate("/signin")}/*
+
+        if ((localStorage.getItem('Email') != 'admin@mail.com' && localStorage.getItem('Password') != 'admin'))
+        {
+          alert.log('You are unauthorised to view this page.')
+          console.log('You are unauthorised to view this page.')
+          navigate("/admin")
+        }*/
+        
+    })
+
     const classes = useStyles();
     return (
         <>
