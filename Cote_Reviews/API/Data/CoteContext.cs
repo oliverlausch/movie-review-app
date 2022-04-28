@@ -20,8 +20,6 @@ namespace API.Data
 
         public DbSet<Review> Reviews { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Register> Registers { get; set; }
-        public DbSet<Login> Logins { get; set; }
-        public DbSet<Response> Responses { get; set; }
+        
     }
 }

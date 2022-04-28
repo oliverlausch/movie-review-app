@@ -13,6 +13,7 @@ import UpdateUserProfile from "./components/Users/UpdateUserProfile";
 import DeleteUser from "./components/Users/DeleteUser"
 import GetUser from "./components/Users/GetUser"
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import MostPopular from "./components/MostPopular";
 
 /*const useStyles = makeStyles(theme => ({
   button:{
@@ -46,6 +47,7 @@ function App() {
 
           {/* Public Routes */}
           <Route path="/" element={ <Home/> } />
+          <Route path="/MostPopular" element={ <MostPopular/>} />
           <Route path="/signin" element={ <SignIn/> } />
           <Route path="/signup" element={ <SignUp/> } />
 

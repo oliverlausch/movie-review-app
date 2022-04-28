@@ -35,10 +35,16 @@ const Navbar = () => {
         <Button onClick={"document.querySelector(#reload)"}><NavLink to="/#" activeStyle>
                 Home
             </NavLink></Button>
+        <Button><NavLink to="/MostPopular" activeStyle>
+                Most Popular
+        </NavLink></Button>
+        <Button><NavLink to={profDirVar} activeStyle>
+                My Profile
+        </NavLink></Button>
         </NavMenu>
-        <NavBtn>
+        {/* <NavBtn>
             <NavBtnLink to={profDirVar}>My Profile</NavBtnLink>
-        </NavBtn>
+        </NavBtn> */}
         <NavBtn>
             <NavBtnLink onClick={signoutFunc} to={loginVar}>{signInOutText}</NavBtnLink>
         </NavBtn>

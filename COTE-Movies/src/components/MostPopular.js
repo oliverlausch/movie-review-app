@@ -80,7 +80,7 @@ background: black;
 //text-transform: capitalize;
 //`;
 
-function Home() {
+function MostPopular() {
   const [searchQuery, updateSearchQuery] = useState();
   const [timeoutId, updateTimeoutId] = useState();
   const [movieList, updateMovieList] = useState([]);
@@ -91,7 +91,7 @@ function Home() {
     // eslint-disable-next-line eqeqeq
     if (searchString == null || searchString == "") {
       const response = await axios.get(
-          `https://imdb-api.com/en/API/Top250Movies/${API_KEY}`
+          `https://imdb-api.com/en/API/MostPopularMovies/${API_KEY}`
       )
       
       //search_header = "Showing Results For: Most Popular Movies";
@@ -195,4 +195,4 @@ function Home() {
 
 }
 
-export default Home;
+export default MostPopular;

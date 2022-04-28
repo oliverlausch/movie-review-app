@@ -82,7 +82,7 @@ padding-top: 5px;
 function GetUserReviews() {
 
   const [vid, setVID] = useState('');
-
+  
 // Define setData
 // setData is review.id, post and rating. Store in memory using
 // local storage for use later in Update.
@@ -99,22 +99,24 @@ function GetUserReviews() {
  // Define a state used to store the Review once called
   const [review, setReview] = useState([]);
 
+  
+
   async function getReviews() {
+    setVID(localStorage.getItem('UserID'));
     await Axios.get("http://localhost:5000/api/Reviews").then(
       (response) => setReview(response.data));
+    
   }
-
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    setVID(localStorage.getItem('UserID'));
-},[])
+  
 
-const VidReview = review.filter(review => review.userId == vid)
-console.log(VidReview);
+
+  const VidReview = review.filter(review => review.userId == vid)
 
   return (
     <div>
-    <Button onClick={getReviews}> Show Reviews </Button>
+    <Button onClick={() => {getReviews();} }> Show Reviews </Button>
 
     {VidReview.map(review => (
       <ul key={review}>

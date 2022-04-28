@@ -66,6 +66,15 @@ public static class DbInitializer
                 Email = "anumi37@mail.com",
                 Password = "password",
             },
+
+            new User
+            {   
+                userId = 6,
+                Name = "Admin",
+                DateRegistered = DateTime.Parse("2022/04/28"),
+                Email = "Admin@mail.com",
+                Password = "admin"
+            }
         };
 
 
