@@ -105,8 +105,8 @@ function GetUserReviews() {
     setVID(localStorage.getItem('UserID'));
     await Axios.get("http://localhost:5000/api/Reviews").then(
       (response) => setReview(response.data));
-    
   }
+  
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   
@@ -123,10 +123,10 @@ function GetUserReviews() {
         <br/>
         <Container>
           <List>
+          <li className='List'><b>Video ID:</b> {review.videoId}</li>
           <li className='List'><b>Rating:</b> {review.rating}</li>
           <li className='List'><b>Post:</b> {review.post}</li>
           <li className='List'><b>Date:</b> {review.date}</li>
-          <li className='List'><b>User ID:</b> {review.userId}</li>
           <br/>
           </List>
         <Update onClick={() => setData(review.id, review.rating, review.post, review.date, review.videoId, review.userId)} ><Link to="/update" style={{ textDecoration: 'none', color: 'white' }}>Update</Link></Update>
