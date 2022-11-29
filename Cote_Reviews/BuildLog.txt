@@ -1,0 +1,53 @@
+Project Build Log
+
+-Changed loading ports in launchSettings.JSON to open at only port Http://localhost.com/5000, and changed launch browser value to false.
+
+Created the Models folder
+-Added Review class with Data Annotations
+-Added User class with Data Annotations
+
+Installed via NuGet Package Manager:
+
+Installed Microsoft.EntityFrameworkCore.SQLite v 5.0.8
+Installed Microsoft.EntityFrameworkCore.Design v 5.0.8
+Installed Microsoft.EntityFrameworkCore v 5.0.8
+
+Created Data folder
+-Added CoteContext class
+
+Edited StartUp.cs class
+-Added services.AddDbContext option, parsing CoteContext, with a Connection String.
+
+In appSettings.Development.JSON:
+Added the previously declared ConnectionString.
+
+Copied .NET CLI global from https://www.nuget.org/packages/dotnet-ef/
+
+dotnet tool install --global dotnet-ef --version 5.0.8
+
+Installed via Package Manager Console.
+(Least I would have -I'm already on version 6.0.3, which is backwards compatible!)
+
+Data Migrations:
+Added first migration in package manager console via:
+dotnet ef migrations add InitialCreate -o Data/Migrations
+(You must navigate to the directory of your API project inside your solution first).
+
+-Edited InitialCreate migration cs file to add table constraints.
+
+Created the database:
+Ran the following:
+dotnet ef database update
+via package manager console
+This will update the existing database with our new migration, or create a new one if we don't already have one.
+
+**Install the SQLite/SQL Server Compact ToolBox extension in Visual Studio to be able to view the database**
+
+Created DbInitializer class with some data.
+Edited Program class to ensure our migrations execute at startup.
+dotnet watch run
+-> If this adds an empty database, remake it using the five dotnet  terminal commands in EditDatabase file attached!
+
+Added ReviewsController
+Added UsersController
+

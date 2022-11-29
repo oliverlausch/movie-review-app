@@ -1,0 +1,18 @@
+How to edit the models in the database:
+
+Ensure the Backend API is not running / Kill active terminal.
+
+cd to Backend directory in terminal
+
+dotnet ef database drop
+y
+
+dotnet ef migrations remove
+
+dotnet ef migrations add InitialCreate -o Data/Migrations
+
+dotnet ef database update
+
+dotnet watch run
+
+Issues - If csproj stops database drop, or database build - Close OneDrive and Remove all running dotnet processes in the task manager.
